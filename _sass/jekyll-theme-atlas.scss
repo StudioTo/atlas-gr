@@ -1,0 +1,175 @@
+@import 'jekyll-theme-cayman';
+
+body {
+  font-family: "Plain", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+/* Color Scheme */
+
+body,
+.main-content h1,
+.main-content h2,
+.main-content h3,
+.main-content h4,
+.main-content h5,
+.main-content h6,
+.page-header {
+  color: #333;
+}
+
+.page-header {
+  background-color: #fff;
+  background-image: none;
+}
+
+.btn {
+  color: #666;
+  border-color: #666;
+}
+
+.btn:hover {
+  color: #333;
+  border-color: #333;
+  background-color: #eee;
+}
+
+a {
+  color: #009fff;
+}
+
+/* Layout */
+
+.page-header {
+  padding: 1rem;
+}
+
+.page-header ul {
+  display: flex;
+  justify-content: center;
+}
+
+.page-header ul li {
+  margin-right: 1em;
+  list-style: none;
+}
+
+#content {
+  padding-top: 0;
+}
+
+#skip-to-content {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  overflow: hidden;
+  top: -10px;
+}
+
+/* Table Style */
+
+.main-content table th,
+.main-content table td {
+  border-color: #c4c4c4;
+}
+
+.main-content tbody {
+  width: 100%;
+  display: table;
+}
+
+.cursus .titre-cours {
+  padding: 0;
+}
+
+.cursus a {
+  color: #333;
+  display: block;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.cursus a:hover {
+  /* background-color: rgba(255, 255, 255, 0.6) */
+}
+
+.code {
+  /* font-size: 0.8em;
+  list-style: none; */
+  font-size: 0.8em;
+  padding: 0 0 0.5rem 1rem;
+}
+
+.cursus .details {
+  font-size: 0.8em;
+  list-style: none;
+  padding-left: 2em;
+}
+
+.periodes {
+  width: 5em;
+}
+
+
+
+/* Couleur des branches AP */
+[class^="AP"] {
+  background-color: #fff9b8;
+}
+
+
+[class^="EP"],
+[class^="ED"],
+[class^="EE"],
+.EUANT,
+.ESTRA {
+  background-color: #d2ffe6;
+}
+
+.total-periodes {
+  padding-left: 1em;
+}
+
+/* Global View */
+
+.global .main-content {
+  margin: 0;
+  padding: 1em;
+  max-width: 100% !important;
+}
+
+.vue-globale {
+  display: flex;
+  flex-direction: row;
+  font-size: 0.5em;
+  justify-content: space-between;
+}
+
+.vue-globale .section-cursus {
+  flex: 0 1 12%;
+}
+
+.global-fpc .vue-globale .section-cursus {
+  flex: 0 1 15%;
+}
+
+.global .profs {
+  list-style: none;
+  padding-left: 1rem;
+}
+.global .profs li {
+}
+
+.global .competences,
+/* .global .profs, */
+td.code {
+  display: none;
+}
+
+.global tr:hover .profs {
+  display: block;
+}
+
+.global .periodes {
+  padding: 0.2rem;
+  width: 2rem;
+}
