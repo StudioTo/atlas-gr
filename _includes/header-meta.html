@@ -1,0 +1,9 @@
+{% comment %} 
+
+  Custom style sheet
+
+{% endcomment %}
+<link rel="stylesheet" href="{{ 
+  '/assets/css/custom.css?v=' 
+  | append: site.github.build_revision 
+  | relative_url }}">

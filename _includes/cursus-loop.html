@@ -1,0 +1,38 @@
+<section class="section-cursus">
+  <h2>{{semestre}}</h2>
+  <table class="cursus">
+    {% assign periodes = 0 %}
+    {% assign periodes_EP = 0 %}
+    {% assign periodes_AP
+    = 0 %}
+    {% for page in site.pages %}
+      {% if page.cursus %}
+        {% for item in page.cursus %}
+          {% if item.[{{formation}}] == semestre %}
+            {% include table-item.html compArray=include.compArray %}
+            {% assign periodes = periodes | plus: periodesCours %}
+            {% if page.type == "EP" %}
+              {% assign periodes_EP = periodes_EP | plus: periodesCours %}
+            {% endif %}
+            {% if page.type == "AP" %}
+              {% assign periodes_AP = periodes_AP | plus: periodesCours %}
+            {% endif %}
+          {%
+    endif %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </table>
+  <p class="total-periodes">
+    Nombre de périodes
+    {{semestre}}:
+    {{ periodes }}
+    {% if periodes_AP != 0 %}
+      (dont
+      {{ periodes_EP }}
+      EP /
+      {{ periodes_AP }}
+      AP)
+    {% endif %}
+  </p>
+</section>

@@ -1,0 +1,18 @@
+<tr class="{{ page.code }} ">
+  <td class="titre-cours">
+    <a href="{{page.url | relative_url}}">{{page.title}}</a>
+    {% if page.code %}
+      <div class="code">{{ page.code }}</div>
+    {% endif %}
+    {% include meta-profs.html %}
+    {% include meta-competences.html compArray=include.compArray %}
+  </td>
+  <td class="periodes">
+  {% if page.periodes %}
+    {{ page.periodes }} p.
+    {% assign periodesCours = page.periodes %}
+  {% else if periodesCours %}
+    {{ periodesCours }} p.
+  {% endif %}
+  </td>
+</tr>
