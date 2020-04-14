@@ -2,4 +2,4 @@ title: Atlas theme
 description: Atlas est un thème GitHub Pages.
 show_downloads: false
 google_analytics:
-theme: atlas
+remote_theme: eracom/atlas
