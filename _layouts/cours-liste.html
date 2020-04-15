@@ -14,11 +14,9 @@
     <main class="main-content" id="content" role="main">
       {{ content }}
 
-      {% comment %}
-        Charger les cours EP
-      {% endcomment %}
+      {% assign type = page.type %}
 
-      {% assign cours = site.pages | where: "type", "EP" | sort: "title" %}
+      {% assign cours = site.pages | where: "layout", "cours" | where: "type", type | sort: "title" %}
       {% assign periodes = 0 %}
 
       {% assign compSubpage = site.pages | where: 'title', 'Compétences' %}
