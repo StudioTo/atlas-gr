@@ -3,20 +3,17 @@
   Navigation
 
 {% endcomment %}
+
+{% assign navListe = site.pages | where: "layout", "liste" | sort: "title" %}
+{% assign navCursus = site.pages | where: "layout", "cursus" | sort: "title" %}
+{% assign navAll = navListe | concat: navCursus %}
+
 <ul class="page-nav">
-  <li>
-    <a href="{{ '/pages/cours-EP' | relative_url }}" class="btn">Cours EP</a>
-  </li>
-  <li>
-    <a href="{{ '/pages/cours-AP' | relative_url }}" class="btn">Cours AP</a>
-  </li>
-  <li>
-    <a href="{{ '/cursus-plein-temps' | relative_url }}" class="btn">Cursus Plein-temps</a>
-  </li>
-  <li>
-    <a href="{{ '/cursus-fpc' | relative_url }}" class="btn">Cursus FPC</a>
-  </li>
-  <li>
-    <a href="{{ '/cursus-dual' | relative_url }}" class="btn">Cursus Dual</a>
-  </li>
+
+  {% for page in navAll %}
+    <li>
+      <a href="{{page.url | relative_url}}" class="btn">{{page.title}}</a>
+    </li>
+  {% endfor %}
+
 </ul>
