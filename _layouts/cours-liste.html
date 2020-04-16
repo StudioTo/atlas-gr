@@ -14,9 +14,14 @@
     <main class="main-content" id="content" role="main">
       {{ content }}
 
-      {% assign type = page.type %}
+      {% if page contains "type" %}
+        {% assign type = page.type %}
+        {% assign cours = site.pages | where: "layout", "cours" | where: "type", type | sort: "title" %}
+      {% else %}
+        {% assign cours = site.pages | where: "layout", "cours" | sort: "title" %}
+      {% endif %}
 
-      {% assign cours = site.pages | where: "layout", "cours" | where: "type", type | sort: "title" %}
+
       {% assign periodes = 0 %}
 
       {% assign compSubpage = site.pages | where: 'title', 'Compétences' %}
