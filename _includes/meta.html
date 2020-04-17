@@ -10,49 +10,40 @@
   {% endif %}
 
   {% if page.periodes %}
-    {{ page.periodes }} périodes hebdomadaires<br/>
+    {{ page.periodes }}
+    périodes hebdomadaires<br/>
   {% else %}
     {% if page.competences %}
       {% assign c_periodes = 0 %}
       {% for item in page.competences %}
         {% for key in item %}
-            {% assign c_periodes = c_periodes | plus: key.last %}
+          {% assign c_periodes = c_periodes | plus: key.last %}
         {% endfor %}
       {% endfor %}
-        {{ c_periodes }} périodes hebdomadaires<br/>
+      {{ c_periodes }}
+      périodes hebdomadaires<br/>
     {% endif %}
   {% endif %}
 
   {% if page.cursus %}
     <h2>Semestre</h2>
     <ul>
-    {% for item in page.cursus %}
-      {% for key in item %}
-        <li>
-          {% if key.first == "FPC" %}
-            <a href="{{ '/cursus-fpc/' | relative_url }}">
-            {% endif %}
-            {% if key.first == "Duals" %}
-            <a href="{{ '/cursus-dual/' | relative_url }}">
-            {% endif %}
-            {% if key.first == "Plein-temps" %}
-            <a href="{{ '/cursus-plein-temps/' | relative_url }}">
-            {% endif %}
-            {{ key.first }}</a>
-          :
-          {{ key.last }}
-        </li>
+      {% for item in page.cursus %}
+        {% for key in item %}
+          <li>{{ key.first }}
+            :
+            {{ key.last }}</li>
+        {% endfor %}
       {% endfor %}
-    {% endfor %}
     </ul>
   {% endif %}
 
   {% if page.competences %}
     <h2>Compétences opérationnelles</h2>
-    
+
     {% assign compSubpage = site.pages | where: 'title', 'Compétences' %}
     {% assign compArray = compSubpage[0].comp %}
-    
+
     {% include meta-competences.html compArray=compArray %}
   {% endif %}
 
