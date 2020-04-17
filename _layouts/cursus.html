@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    {% include header.html %}
+  </head>
+  <body>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
+      <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
+      {% include nav.html %}
+    </header>
+
+    <main class="main-content" id="content" role="main">
+      {{ content }}
+
+      {% assign cours = site.pages %}
+
+      {% assign compSubpage = site.pages | where: 'title', 'Compétences' %}
+      {% assign compArray = compSubpage[0].comp %}
+
+      {% if page contains "formation" %}
+        {% assign formation = page.formation %}
+      {% endif %}
+
+      {% if page contains "semestres" %}
+        {% assign semestres = page.semestres | split: ',' %}
+      {% endif %}
+
+        {% for semestre in semestres %}
+          {% include cursus-loop.html compArray=compArray %}
+          {% assign periodes_EP_total = periodes_EP_total | plus: periodes_EP %}
+          {% assign periodes_AP_total = periodes_AP_total | plus: periodes_AP %}
+        {% endfor %}
+
+        {% if periodes_EP_total > 0 %}
+        <p>Total périodes EP:
+          {{ periodes_EP_total }}</p>
+        {% endif %}
+
+        {% if periodes_AP_total  > 0 %}
+        <p>Total périodes AP:
+          {{ periodes_AP_total }}</p>
+        {% endif %}
+        
+
+        {% include footer.html %}
+    </main>
+    </body>
+  </body>
+</html>
