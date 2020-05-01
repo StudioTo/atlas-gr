@@ -1,0 +1,10 @@
+{% for item in page.code %}
+  {% assign definition = "" %}
+  {% assign definition = include.acronymArray[page.code] %}
+  <p>
+    <span data-acronym="{{ definition }}">{{ page.code }}</span>
+    {% if definition %}
+      ({{ definition }})
+    {% endif %}
+  </p>
+{% endfor %}

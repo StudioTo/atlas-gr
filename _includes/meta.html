@@ -6,12 +6,17 @@
 <div class="cours-meta">
 
   {% if page.code %}
-    {{ page.code }}<br/>
+
+    {% assign acronymSubpage = site.pages | where: 'title', 'Acronymes' %}
+    {% assign acronymArray = acronymSubpage[0].acronymes %}
+
+    {% include acronymes.html acronymArray=acronymArray %}
+
   {% endif %}
 
   {% if page.periodes %}
-    {{ page.periodes }}
-    périodes hebdomadaires<br/>
+    <p>{{ page.periodes }}
+      périodes hebdomadaires</p>
   {% else %}
     {% if page.competences %}
       {% assign c_periodes = 0 %}
