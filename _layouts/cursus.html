@@ -25,6 +25,11 @@
 
       {% if page contains "semestres" %}
         {% assign semestres = page.semestres | split: ',' %}
+        <style>
+          .vue-globale .section-cursus {
+              flex: 0 1 {{ 100 | divided_by: semestres.size }}%;
+          }
+        </style>
       {% endif %}
       <div class="vue-globale">
         {% for semestre in semestres %}
