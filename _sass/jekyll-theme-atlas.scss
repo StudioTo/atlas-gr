@@ -133,47 +133,4 @@ a {
   padding-left: 1em;
 }
 
-/* Global View */
-
-.global .main-content {
-  margin: 0;
-  padding: 1em;
-  max-width: 100% !important;
-}
-
-.vue-globale {
-  display: flex;
-  flex-direction: row;
-  font-size: 0.5em;
-  justify-content: space-between;
-}
-
-.vue-globale .section-cursus {
-  flex: 0 1 12%;
-}
-
-.global-fpc .vue-globale .section-cursus {
-  flex: 0 1 15%;
-}
-
-.global .profs {
-  list-style: none;
-  padding-left: 1rem;
-}
-.global .profs li {
-}
-
-.global .competences,
-/* .global .profs, */
-td.code {
-  display: none;
-}
-
-.global tr:hover .profs {
-  display: block;
-}
-
-.global .periodes {
-  padding: 0.2rem;
-  width: 2rem;
-}
+@import 'modele-cursus';

@@ -3,7 +3,7 @@
   <head>
     {% include header.html %}
   </head>
-  <body>
+  <body class="global">
 
     <header class="page-header" role="banner">
       <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
@@ -11,7 +11,7 @@
       {% include nav.html %}
     </header>
 
-    <main class="main-content" id="content" role="main">
+    <main class="main-content global" id="content" role="main">
       {{ content }}
 
       {% assign cours = site.pages %}
@@ -26,12 +26,13 @@
       {% if page contains "semestres" %}
         {% assign semestres = page.semestres | split: ',' %}
       {% endif %}
-
+      <div class="vue-globale">
         {% for semestre in semestres %}
           {% include cursus-loop.html compArray=compArray %}
           {% assign periodes_EP_total = periodes_EP_total | plus: periodes_EP %}
           {% assign periodes_AP_total = periodes_AP_total | plus: periodes_AP %}
         {% endfor %}
+      </div>
 
         {% if periodes_EP_total > 0 %}
         <p>Total périodes EP:
