@@ -1,7 +1,11 @@
 # Atlas - thème Jekyll pour plan de formation
 
+Atlas est un système basé sur Jekyll, créé pour gérer des plans de formation, dans l'enseignement professionnel.
+
 Ce dossier contient un thème Jekyll, dérivé du [thème Cayman](https://github.com/pages-themes/cayman/).
 
-## Comment ça fonctionne?
+## Comment ça fonctionne? 🤔
 
-Toute la documentation est [dans le wiki](https://github.com/eracom/atlas/wiki).
+👉 Toute la documentation est [dans le wiki](https://github.com/eracom/atlas/wiki).
+
+📺 Et il y a une vidéo explicative: https://www.youtube.com/watch?v=5RT4l1X9xG4
