@@ -17,6 +17,12 @@
   flex: 0 1 12%;
 }
 
+/* Gouttière des colonnes */
+
+.vue-globale .section-cursus:not(:last-child) {
+  margin-right: 1rem;
+}
+
 .global .profs {
   list-style: none;
   padding-left: 1rem;
