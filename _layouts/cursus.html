@@ -14,13 +14,15 @@
     <main class="main-content global" id="content" role="main">
       {{ content }}
 
-      {% assign cours = site.pages %}
+      {% assign cours = site.pages %}{% comment %} Liste de tous les cours {% endcomment %}
 
       {% assign compSubpage = site.pages | where: 'title', 'Compétences' %}
       {% assign compArray = compSubpage[0].comp %}
 
-      {% if page contains "formation" %}
-        {% assign formation = page.formation %}
+      {% if page contains "cursus" %}
+        {% assign cursus = page.cursus %}
+      {% elsif page contains "formation" %}
+        {% assign cursus = page.formation %}
       {% endif %}
 
       {% if page contains "semestres" %}

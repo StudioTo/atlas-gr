@@ -3,12 +3,11 @@
   <table class="cursus">
     {% assign periodes = 0 %}
     {% assign periodes_EP = 0 %}
-    {% assign periodes_AP
-    = 0 %}
+    {% assign periodes_AP = 0 %}
     {% for page in site.pages %}
       {% if page.cursus %}
         {% for item in page.cursus %}
-          {% if item.[{{formation}}] == semestre %}
+          {% if item.[{{cursus}}] == semestre %}
             {% include table-item.html compArray=include.compArray %}
             {% assign periodes = periodes | plus: periodesCours %}
             {% if page.type == "EP" %}
@@ -17,8 +16,7 @@
             {% if page.type == "AP" %}
               {% assign periodes_AP = periodes_AP | plus: periodesCours %}
             {% endif %}
-          {%
-    endif %}
+          {% endif %}
         {% endfor %}
       {% endif %}
     {% endfor %}
