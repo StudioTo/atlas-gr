@@ -1,8 +1,7 @@
-@import 'jekyll-theme-cayman';
+@import "jekyll-theme-cayman";
 
 body {
   font-family: "Plain", "Helvetica Neue", Helvetica, Arial, sans-serif;
-
 }
 
 /* Color Scheme */
@@ -42,11 +41,14 @@ a {
 
 .page-header {
   padding: 1rem;
+  padding-left: 4rem;
+  text-align: left;
 }
 
 .page-header ul {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-left: 0;
 }
 
 .page-header ul li {
@@ -113,7 +115,10 @@ a {
   width: 5em;
 }
 
-
+/* Eléments non-visibles */
+.profs {
+  display:none;
+}
 
 /* Couleur des branches AP */
 
@@ -124,7 +129,6 @@ a {
 [class^="AP"] {
   background-color: #fff9b8;
 }
-
 
 [class^="EP"],
 [class^="ED"],
@@ -138,4 +142,4 @@ a {
   padding-left: 1em;
 }
 
-@import 'modele-cursus';
+@import "modele-cursus";
