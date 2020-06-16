@@ -10,9 +10,9 @@
 
 <ul class="page-nav">
 
-  {% for page in navAll %}
+  {% for node in navAll %}
     <li>
-      <a href="{{page.url | relative_url}}" class="btn">{{page.title}}</a>
+      <a href="{{node.url | relative_url}}" class="btn{% if page.url == node.url %} active{% endif %}">{{node.title}}</a>
     </li>
   {% endfor %}
 
