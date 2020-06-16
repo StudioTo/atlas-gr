@@ -14,7 +14,7 @@ body,
 .main-content h5,
 .main-content h6,
 .page-header {
-  color: #333;
+  color: $black;
 }
 
 .page-header {
@@ -22,16 +22,6 @@ body,
   background-image: none;
 }
 
-.btn {
-  color: #666;
-  border-color: #666;
-}
-
-.btn:hover {
-  color: #333;
-  border-color: #333;
-  background-color: #eee;
-}
 
 a {
   color: #009fff;
@@ -67,11 +57,30 @@ a {
   top: -10px;
 }
 
+/* Modèle Cours */
+
+.cours-meta {
+  font-size: 1rem;
+  background: $pale;
+  padding: 1.5rem;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 0.2em;
+    font-size: 1.3rem;
+  }
+
+  ul:last-child {
+    margin-bottom: 0;
+  }
+
+}
+
 /* Table Style */
 
 .main-content table th,
 .main-content table td {
-  border-color: #c4c4c4;
+  border-color: $grey;
 }
 
 .main-content tbody {

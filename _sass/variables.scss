@@ -9,13 +9,19 @@ $header-bg-color-secondary: #155799 !default;
 
 // Text
 $section-headings-color: #159957 !default;
-$body-text-color: #606c71 !default;
-$body-link-color: #1e6bb8 !default;
+$black: #333 !default;
+$body-text-color: $black;
+$body-link-color: #030404 !default;
 $blockquote-text-color: #819198 !default;
+
+// Backgrounds
+$dark: #666 !default;
+$grey: #c4c4c4 !default;
+$pale: #eee !default;
 
 // Code
 $code-bg-color: #f3f6fa !default;
-$code-text-color: #567482 !default;
+$code-text-color: #333 !default;
 
 // Borders
 $border-color: #dce6f0 !default;

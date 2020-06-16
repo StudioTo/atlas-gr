@@ -63,19 +63,23 @@ a {
 .btn {
   display: inline-block;
   margin-bottom: 1rem;
-  color: rgba(255, 255, 255, 0.7);
-  background-color: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
+  color: $black;
+  background-color: $pale;
+  border-color: $pale;
   border-style: solid;
-  border-width: 1px;
-  border-radius: 0.3rem;
+  border-width: 0 0 3px 0;
+  // border-radius: 0.3rem;
   transition: color 0.2s, background-color 0.2s, border-color 0.2s;
 
-  &:hover {
-    color: rgba(255, 255, 255, 0.8);
+  &:hover, 
+  &.active {
     text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.3);
+    background-color: $pale;
+    border-color: $grey;
+  }
+
+  &.active {
+    border-color: $black;
   }
 
   + .btn {
