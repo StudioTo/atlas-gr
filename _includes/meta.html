@@ -31,7 +31,12 @@
   {% endif %}
 
   {% if page.cursus %}
-    <h2>Semestre</h2>
+    <h2>
+      {% if page.timeunit %}
+        {{ page.timeunit }}
+        {% else %}Semestre
+      {% endif %}
+    </h2>
     <ul>
       {% for item in page.cursus %}
         {% for key in item %}
