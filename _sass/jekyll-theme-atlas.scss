@@ -40,14 +40,13 @@ a {
 /* Layout */
 
 .page-header {
-  padding: 1rem;
-  padding-left: 4rem;
   text-align: left;
 }
 
 .page-header ul {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
   padding-left: 0;
 }
 
