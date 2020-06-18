@@ -3,6 +3,10 @@
   Metadata pour un cours - sous forme de Front Matter
 
 {% endcomment %}
+{% assign timeunit = "Semestre" %}
+{% if page.timeunit %}
+  {% assign timeunit =  page.timeunit %}
+{% endif %}
 <div class="cours-meta">
 
   {% if page.code %}
@@ -16,7 +20,7 @@
 
   {% if page.periodes %}
     <p>{{ page.periodes }}
-      périodes hebdomadaires</p>
+      périodes</p>
   {% else %}
     {% if page.competences %}
       {% assign c_periodes = 0 %}
@@ -26,17 +30,12 @@
         {% endfor %}
       {% endfor %}
       {{ c_periodes }}
-      périodes hebdomadaires<br/>
+      périodes<br/>
     {% endif %}
   {% endif %}
 
   {% if page.cursus %}
-    <h2>
-      {% if page.timeunit %}
-        {{ page.timeunit }}
-        {% else %}Semestre
-      {% endif %}
-    </h2>
+    <h2>{{ timeunit }}</h2>
     <ul>
       {% for item in page.cursus %}
         {% for key in item %}
