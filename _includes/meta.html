@@ -36,7 +36,7 @@
 
   {% if page.cursus %}
     <h2>{{ timeunit }}</h2>
-    <ul>
+    <ul class="liste-horizontale">
       {% for item in page.cursus %}
         {% for key in item %}
           <li>{{ key.first }}
@@ -45,6 +45,17 @@
         {% endfor %}
       {% endfor %}
     </ul>
+  {% endif %}
+
+  {% if page.profs %}
+    <div class="profs">
+      <h2>Profs</h2>
+      <ul class="liste-horizontale">
+        {% for item in page.profs %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
   {% endif %}
 
   {% if page.competences %}

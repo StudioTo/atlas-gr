@@ -27,6 +27,19 @@ a {
   color: #009fff;
 }
 
+.liste-horizontale {
+  padding: 0;
+}
+
+.liste-horizontale li {
+  display: inline;
+  list-style: none;
+
+}
+.liste-horizontale li:not(:last-child)::after {
+  content: " / ";
+}
+
 /* Layout */
 
 .page-header {
@@ -55,6 +68,12 @@ a {
   position: absolute;
   overflow: hidden;
   top: -10px;
+}
+
+/* Footer */
+
+.edit-link {
+  display: none;
 }
 
 /* Modèle Cours */
