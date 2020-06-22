@@ -65,21 +65,21 @@ a {
   margin-bottom: 1rem;
   color: $black;
   background-color: $pale;
-  border-color: $pale;
+  border-color: $black;
   border-style: solid;
-  border-width: 0 0 3px 0;
+  border-width: 0 0 2px 0;
   // border-radius: 0.3rem;
   transition: color 0.2s, background-color 0.2s, border-color 0.2s;
 
   &:hover, 
   &.active {
     text-decoration: none;
-    background-color: $pale;
-    border-color: $grey;
+    background-color: $black;
+    color: white;
   }
 
   &.active {
-    border-color: $black;
+    background-color: $sombre;
   }
 
   + .btn {
@@ -310,6 +310,7 @@ a {
   ul,
   ol {
     margin-top: 0;
+    padding-left: 1.2rem;
   }
 
   blockquote {
