@@ -27,8 +27,10 @@ a {
   color: #009fff;
 }
 
-.liste-horizontale {
+.liste-horizontale,
+.main-content .liste-horizontale {
   padding: 0;
+  margin-bottom: 0.2em;
 }
 
 .liste-horizontale li {
@@ -99,7 +101,7 @@ a {
 
 .main-content table th,
 .main-content table td {
-  border-color: $grey;
+  border-color: $black;
 }
 
 .main-content tbody {
