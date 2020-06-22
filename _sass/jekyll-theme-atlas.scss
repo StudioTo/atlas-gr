@@ -27,6 +27,11 @@ a {
   color: #009fff;
 }
 
+a.no-link {
+  text-decoration: none;
+  cursor: text;
+}
+
 .liste-horizontale,
 .main-content .liste-horizontale {
   padding: 0;
