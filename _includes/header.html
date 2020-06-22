@@ -1,10 +1,9 @@
 <meta charset="UTF-8">
 <title>{{ page.title | default: site.title | default: site.github.repository_name }}</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#157878">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="stylesheet" href="{{ 
-    '/assets/css/style.css?v=' 
-    | append: site.github.build_revision 
-    | relative_url 
-  }}">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="#157878" name="theme-color">
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+<link rel="stylesheet" href="{{ '/assets/css/style.css?v=' 
+  | append: site.github.build_revision 
+  | relative_url }}">
+{% include couleurs.html %}

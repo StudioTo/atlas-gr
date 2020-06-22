@@ -1,0 +1,10 @@
+<style>
+
+{% assign colorSubpage = site.pages | where: 'title', 'Couleurs' %}
+{% assign colorArray = colorSubpage[0].couleurs %}
+
+{% for valuePair in colorArray %}
+  .{{ valuePair[0] }}{ background:{{valuePair[1]}}; }  
+{% endfor %}
+
+</style>
