@@ -151,25 +151,13 @@ a.no-link {
 
 /* Eléments non-visibles */
 .profs {
-  display:none;
+  display: none;
 }
 
 /* Couleur des branches AP */
 
-[class$="table-item"] {
+.table-item {
   background-color: #f1f1f1;
-}
-
-[class^="AP"] {
-  background-color: #fff9b8;
-}
-
-[class^="EP"],
-[class^="ED"],
-[class^="EE"],
-.EUANT,
-.ESTRA {
-  background-color: #d2ffe6;
 }
 
 .total-periodes {
