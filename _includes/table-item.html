@@ -1,6 +1,7 @@
 <tr class="{% 
   if page.code %}code-{{ page.code }} {% endif %}{% 
-  if page.type %}type-{{ page.type }} {% endif 
+  if page.type %}type-{{ page.type }} {% endif %}{% 
+  if page.matiere %}matiere-{{ page.matiere }} {% endif 
   %}table-item">
   <td class="titre-cours">
     <a href="#" class="no-link" data-link="{{page.url | relative_url}}">{{page.title}}</a>
