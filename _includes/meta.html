@@ -7,7 +7,11 @@
 {% if page.timeunit %}
   {% assign timeunit =  page.timeunit %}
 {% endif %}
-<div class="cours-meta">
+<div class="{% 
+  if page.code %}code-{{ page.code }} {% endif %}{% 
+  if page.type %}type-{{ page.type }} {% endif %}{% 
+  if page.matiere %}matiere-{{ page.matiere }} {% endif 
+  %}cours-meta">
 
   {% if page.code %}
 
