@@ -1,9 +1,7 @@
 // Retrieving URL Parameters
 
-// test for: ?id=admin
-
 const urlParams = new URLSearchParams(window.location.search)
-const access = urlParams.get('id');
+const access = urlParams.get('vue');
 const tableLinks = document.querySelectorAll("a.no-link");
 
 for (var i = 0; i < tableLinks.length; i++) {
