@@ -7,26 +7,28 @@
 {% if page.timeunit %}
   {% assign timeunit =  page.timeunit %}
 {% endif %}
-<div class="{% 
+<footer class="{% 
   if page.code %}code-{{ page.code }} {% endif %}{% 
   if page.type %}type-{{ page.type }} {% endif %}{% 
   if page.matiere %}matiere-{{ page.matiere }} {% endif 
   %}cours-meta">
 
   {% if page.code %}
-
+  <section class="meta-section">
     {% assign acronymSubpage = site.pages | where: 'title', 'Acronymes' %}
     {% assign acronymArray = acronymSubpage[0].acronymes %}
 
     {% include acronymes.html acronymArray=acronymArray %}
-
+  </section>
   {% endif %}
 
   {% if page.periodes %}
-    <p>{{ page.periodes }}
-      périodes</p>
+  <section class="meta-section">
+    <p>{{ page.periodes }} périodes</p>
+  </section>
   {% else %}
     {% if page.competences %}
+    <section class="meta-section">
       {% assign c_periodes = 0 %}
       {% for item in page.competences %}
         {% for key in item %}
@@ -35,11 +37,13 @@
       {% endfor %}
       {{ c_periodes }}
       périodes<br/>
+    </section>
     {% endif %}
   {% endif %}
 
   {% if page.cursus %}
-    <h2>{{ timeunit }}</h2>
+  <section class="meta-section"> 
+  <h2>{{ timeunit }}</h2>
     <ul class="liste-horizontale">
       {% for item in page.cursus %}
         {% for key in item %}
@@ -49,26 +53,29 @@
         {% endfor %}
       {% endfor %}
     </ul>
+  </section> 
   {% endif %}
 
   {% if page.profs %}
-    <div class="profs">
+    <section class="profs meta-section">
       <h2>Profs</h2>
       <ul class="liste-horizontale">
         {% for item in page.profs %}
           <li>{{ item }}</li>
         {% endfor %}
       </ul>
-    </div>
+    </section>
   {% endif %}
 
   {% if page.competences %}
+  <section class="meta-section meta-competences"> 
     <h2>Compétences opérationnelles</h2>
 
     {% assign compSubpage = site.pages | where: 'title', 'Compétences' %}
     {% assign compArray = compSubpage[0].comp %}
 
     {% include meta-competences.html compArray=compArray %}
+  </section>
   {% endif %}
 
-</div>
+</footer>
