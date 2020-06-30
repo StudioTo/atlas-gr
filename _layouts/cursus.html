@@ -14,7 +14,13 @@
     <main class="main-content global" id="content" role="main">
       {{ content }}
 
-      {% assign cours = site.pages %}{% comment %} Liste de tous les cours {% endcomment %}
+      {% if page contains "ordre" %}
+        {% assign ordre = page.ordre %}
+      {% else %}
+        {% assign ordre = "title" %}
+      {% endif %}
+
+      {% assign cours = site.pages | where: "layout", "cours" | sort: ordre %}{% comment %} Liste de tous les cours {% endcomment %}
 
       {% assign compSubpage = site.pages | where: 'title', 'Compétences' %}
       {% assign compArray = compSubpage[0].comp %}

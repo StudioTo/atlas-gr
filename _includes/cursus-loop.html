@@ -4,7 +4,7 @@
     {% assign periodes = 0 %}
     {% assign periodes_EP = 0 %}
     {% assign periodes_AP = 0 %}
-    {% for page in site.pages %}
+    {% for page in cours %}
       {% if page.cursus %}
         {% for item in page.cursus %}
           {% if item.[{{cursus}}] == semestre %}
