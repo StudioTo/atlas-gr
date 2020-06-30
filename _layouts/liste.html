@@ -16,9 +16,9 @@
 
       {% if page contains "type" %}
         {% assign type = page.type %}
-        {% assign cours = site.pages | where: "layout", "cours" | where: "type", type | sort: "title" %}
+        {% assign cours = site.pages | where: "layout", "cours" | where: "type", type %}
       {% else %}
-        {% assign cours = site.pages | where: "layout", "cours" | sort: "title" %}
+        {% assign cours = site.pages | where: "layout", "cours" %}
       {% endif %}
 
 
