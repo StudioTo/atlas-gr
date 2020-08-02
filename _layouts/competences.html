@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "fr" }}">
+  <head>
+    {% include header.html %}
+  </head>
+  <body>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
+      <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
+      {% include nav.html %}
+    </header>
+
+    <main class="main-content" id="content" role="main">
+      {{ content }}
+      
+      {% assign compSubpage = site.pages | where: 'title', 'Compétences' %}
+      {% assign compArray = compSubpage[0].comp %}
+
+      {% assign cours = site.pages | where: "layout", "cours" %}
+
+      <table class="competences">
+
+        {% for competence in compArray %}
+          {% include table-item-comp.html competence=competence cours=cours %}
+        {% endfor %}
+
+      </table>
+
+      {% include footer.html %}
+    </main>
+  </body>
+</html>

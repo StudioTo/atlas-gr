@@ -1,0 +1,22 @@
+<tr class="{% 
+  if page.code %}code-{{ page.code }} {% endif %}{% 
+  if page.type %}type-{{ page.type }} {% endif %}{% 
+  if page.matiere %}matiere-{{ page.matiere }} {% endif 
+  %}table-item">
+  <td class="titre-cours">
+    {{ competence.first }} – {{ competence.last }}
+  </td>
+  <td class="periodes">
+      <ul>
+    {% for unCours in cours offset:0 %}
+      {% for compArray in unCours.competences %}
+        {% for item in compArray %}
+          {% if item.first == competence.first %}
+              <li><a href="#" class="no-link" data-link="{{unCours.url | relative_url}}">{{unCours.title}}</a></li>
+          {% endif %}
+       {% endfor %}
+      {% endfor %}
+     {% endfor %}
+        </ul>
+  </td>
+</tr>
