@@ -1,19 +1,24 @@
 {% comment %} 
-
   Navigation
-
 {% endcomment %}
 
-{% assign navListe = site.pages | where: "layout", "liste" | sort: "title" %}
-{% assign navCursus = site.pages | where: "layout", "cursus" | sort: "title" %}
-{% assign navAll = navListe | concat: navCursus %}
+{% if site.menu And site.menu != "" And site.menu != nil %}
+   {% for menu_item in site.menu %}
+    {% assign navItem = site.pages | where: "title", menu_item %}
+    {% assign navAll = navAll | concat: navItem %}
+   {% endfor %}
+{% else %}
+
+  {% assign navListe = site.pages | where: "layout", "liste" | sort: "title" %}
+  {% assign navCursus = site.pages | where: "layout", "cursus" | sort: "title" %}
+  {% assign navAll = navListe | concat: navCursus %}
+
+{% endif %}
 
 <ul class="page-nav">
-
   {% for node in navAll %}
     <li>
       <a href="{{node.url | relative_url}}" class="btn{% if page.url == node.url %} active{% endif %}">{{node.title}}</a>
     </li>
   {% endfor %}
-
 </ul>
