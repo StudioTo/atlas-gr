@@ -1,0 +1,69 @@
+/* Print Styles */
+
+
+@media print {
+
+  *,
+  *::before,
+  *::after {
+    color: #000 !important;
+    /* Black prints faster */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /*
+   * Printing Tables:
+   * https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
+   */
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  .page-header {
+    padding-left: 16px;
+    padding-right: 16px;
+    float: left;
+  }
+
+  .project-name, h1 {
+    font-size: 9pt;
+  } 
+
+  .main-content p {
+    font-size: 9pt;
+  }
+
+  .page-header .project-tagline,
+  .page-header .page-nav {
+    display: none;
+  }
+}
