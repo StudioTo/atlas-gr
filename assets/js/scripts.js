@@ -22,27 +22,34 @@ function activateLinks() {
 
 }
 
+function showItems(hiddenClass, displayMode) {
+  var hiddenItems = document.getElementsByClassName(hiddenClass);
+  for (var i = 0; i < hiddenItems.length; i++) {
+    hiddenItems[i].style.display = displayMode;
+  }
+}
+
 if (access == "profs") {
 
   // rendre visible
   activateLinks();
+  showItems("profs-visible", "block");
+  showItems("profs-visible-cell", "table-cell");
+   
 
 } else if (access == "all") {
 
   // rendre visible:
   activateLinks();
 
+  showItems("profs-visible", "block");
+  showItems("profs-visible-cell", "table-cell");
+
   // lien édition .edit-link
-  var editLink = document.getElementsByClassName("edit-link");
-  for (var i = 0; i < editLink.length; i++) {
-    editLink[i].style.display = "block";
-  }
+  showItems("edit-link", "block");
 
   // .profs
-  var listeProfs = document.getElementsByClassName("profs");
-  for (var i = 0; i < listeProfs.length; i++) {
-    listeProfs[i].style.display = "block";
-  }
+  showItems("profs", "block");
 
 }
 

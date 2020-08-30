@@ -180,7 +180,9 @@ a.no-link {
 }
 
 /* Eléments non-visibles */
-.profs {
+.profs,
+.profs-visible,
+.profs-visible-cell {
   display: none;
 }
 
