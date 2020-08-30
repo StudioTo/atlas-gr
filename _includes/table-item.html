@@ -8,6 +8,9 @@
     {% if page.code %}
       <div class="code">{{ page.code }}</div>
     {% endif %}
+    {% if page.description %}
+      <div class="description">{{ page.description }}</div>
+    {% endif %}
     {% include meta-profs.html %}
     {% include meta-competences.html compArray=include.compArray %}
   </td>
