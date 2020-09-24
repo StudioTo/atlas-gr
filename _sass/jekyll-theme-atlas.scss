@@ -28,11 +28,6 @@ a {
   color: #009fff;
 }
 
-a.no-link {
-  text-decoration: none;
-  cursor: text;
-}
-
 .liste-horizontale,
 .main-content .liste-horizontale {
   padding: 0;
@@ -80,9 +75,6 @@ a.no-link {
 
 /* Footer */
 
-.edit-link {
-  display: none;
-}
 
 /* Modèle Cours */
 
@@ -183,12 +175,7 @@ a.no-link {
   padding: 0 1.5em 1em;
 }
 
-/* Eléments non-visibles */
-.profs,
-.profs-visible,
-.profs-visible-cell {
-  display: none;
-}
+
 
 /* Couleur des branches AP */
 

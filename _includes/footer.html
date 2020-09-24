@@ -8,4 +8,7 @@
     <a class="edit-link" href="{{ site.github.repository_url }}/edit/master/{{ page.path }}">Modifier cette page</a>
   {% endif %}
 </footer>
-<script src="{{ '/assets/js/scripts.js?v=' | append: site.github.build_revision | relative_url }}"></script>
+
+{% if site.access_admin %}
+{% include js-access.html %}
+{% endif %}

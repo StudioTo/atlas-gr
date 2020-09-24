@@ -12,7 +12,7 @@
       {% for compArray in unCours.competences %}
         {% for item in compArray %}
           {% if item.first == competence.first %}
-              <li><a href="#" class="no-link" data-link="{{unCours.url | relative_url}}">{{unCours.title}}</a></li>
+              <li><a href="{{unCours.url | relative_url}}" class="no-link" data-link="{{unCours.url | relative_url}}">{{unCours.title}}</a></li>
           {% endif %}
        {% endfor %}
       {% endfor %}
