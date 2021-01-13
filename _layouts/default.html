@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    {% include header.html %}
-  </head>
-  <body>
-    <a href="#content" id="skip-to-content">Skip to the content.</a>
+<html lang="{{ site.lang | default: " en-US" }}">
 
-    <header class="page-header" role="banner">
-      <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
-      <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
+<head>
+  {% include header.html %}
+</head>
 
-      {% include nav.html %}
-    </header>
+<body class="body-default">
+  <a href="#content" id="skip-to-content">Skip to the content.</a>
 
-    <main class="main-content" id="content" role="main">
-      {{ content }}
+  <header class="page-header" role="banner">
+    <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
+    <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
 
-      {% include footer.html %}
-    </main>
-  </body>
+    {% include nav.html %}
+  </header>
+
+  <main class="main-content" id="content" role="main">
+    {{ content }}
+
+    {% include footer.html %}
+  </main>
+</body>
+
 </html>
