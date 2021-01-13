@@ -61,11 +61,14 @@
   }
 
   .body-cours .project-name,
-  .body-cours h1 {
+  .body-cours h1,
+  .body-default .project-nam,
+  .body-default h1 {
     font-size: 14pt;
   }
 
-  .body-cours {
+  .body-cours,
+  .body-default {
     column-count: 2;
     column-gap: 2em;
   }
