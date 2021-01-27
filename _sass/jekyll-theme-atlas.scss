@@ -1,6 +1,5 @@
 @import "jekyll-theme-cayman";
 
-
 body {
   font-family: "Plain", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -23,7 +22,6 @@ body,
   background-image: none;
 }
 
-
 a {
   color: #009fff;
 }
@@ -37,7 +35,6 @@ a {
 .liste-horizontale li {
   display: inline;
   list-style: none;
-
 }
 .liste-horizontale li:not(:last-child)::after {
   content: " / ";
@@ -75,7 +72,6 @@ a {
 
 /* Footer */
 
-
 /* Modèle Cours */
 
 .cours-meta {
@@ -111,18 +107,19 @@ a {
   .meta-section {
     margin-bottom: 0.5em;
     -webkit-column-break-inside: avoid;
-              page-break-inside: avoid;
-                   break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
 
   .meta-competences {
     column-span: all;
     margin-top: 1em;
   }
-
 }
 
-
+.main-content-columns {
+  margin-top: 2rem;
+}
 
 /* Table Style */
 
@@ -174,8 +171,6 @@ a {
 .description {
   padding: 0 1.5em 1em;
 }
-
-
 
 /* Couleur des branches AP */
 

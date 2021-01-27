@@ -1,11 +1,11 @@
-{% comment %} 
+{% comment %}
 
-  Metadata pour un cours - sous forme de Front Matter
+Metadata pour un cours - sous forme de Front Matter
 
 {% endcomment %}
 {% assign timeunit = "Semestre" %}
 {% if page.timeunit %}
-  {% assign timeunit =  page.timeunit %}
+{% assign timeunit = page.timeunit %}
 {% endif %}
 <footer class="{% 
   if page.code %}code-{{ page.code }} {% endif %}{% 
@@ -27,48 +27,48 @@
     <p>{{ page.periodes }} périodes</p>
   </section>
   {% else %}
-    {% if page.competences %}
-    <section class="meta-section">
-      {% assign c_periodes = 0 %}
-      {% for item in page.competences %}
-        {% for key in item %}
-          {% assign c_periodes = c_periodes | plus: key.last %}
-        {% endfor %}
-      {% endfor %}
-      {{ c_periodes }}
-      périodes<br/>
-    </section>
-    {% endif %}
+  {% if page.competences %}
+  <section class="meta-section">
+    {% assign c_periodes = 0 %}
+    {% for item in page.competences %}
+    {% for key in item %}
+    {% assign c_periodes = c_periodes | plus: key.last %}
+    {% endfor %}
+    {% endfor %}
+    {{ c_periodes }}
+    périodes<br />
+  </section>
+  {% endif %}
   {% endif %}
 
   {% if page.cursus %}
-  <section class="meta-section"> 
-  <h2>{{ timeunit }}</h2>
+  <section class="meta-section">
+    <h2>{{ timeunit }}</h2>
     <ul class="liste-horizontale">
       {% for item in page.cursus %}
-        {% for key in item %}
-          <li>{{ key.first }}
-            :
-            {{ key.last }}</li>
-        {% endfor %}
+      {% for key in item %}
+      <li>{{ key.first }}
+        :
+        {{ key.last }}</li>
+      {% endfor %}
       {% endfor %}
     </ul>
-  </section> 
+  </section>
   {% endif %}
 
   {% if page.profs %}
-    <section class="profs meta-section">
-      <h2>Profs</h2>
-      <ul class="liste-horizontale">
-        {% for item in page.profs %}
-          <li>{{ item }}</li>
-        {% endfor %}
-      </ul>
-    </section>
+  <section class="profs meta-section">
+    <h2>Profs</h2>
+    <ul class="liste-horizontale">
+      {% for item in page.profs %}
+      <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  </section>
   {% endif %}
 
   {% if page.competences %}
-  <section class="meta-section meta-competences"> 
+  <section class="meta-section meta-competences profs-visible">
     <h2>Compétences opérationnelles</h2>
 
     {% assign compSubpage = site.pages | where: 'title', 'Compétences' %}
