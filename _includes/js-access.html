@@ -86,13 +86,15 @@
   if (access) {
     // ajouter le paramètre sur tous les liens
     var anchors = document.getElementsByTagName("a");
+    var hostURI = window.location.protocol + "//" + window.location.host;
 
     for (var i = 0; i < anchors.length; i++) {
 
       // Ne pas ajouter le paramètre sur des liens sortants.
-      if (anchors[i].href.indexOf("http") == -1) {
+      if (anchors[i].href.indexOf(hostURI) != -1) {
         anchors[i].href = anchors[i].href + "?" + urlParams;
       }
+
     }
   }
 
