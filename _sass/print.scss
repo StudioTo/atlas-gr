@@ -66,6 +66,20 @@
     font-size: 14pt;
   }
 
+  .main-content-cours .cours-meta {
+    column-count: 3;
+    column-gap: 2em;
+  }
+
+  .cours-meta .meta-competences {
+    column-count: 3;
+  }
+
+  .cours-meta .meta-competences h2 {
+    column-span: all;
+    border-top: 1px solid black;
+  }
+
   .main-content-columns {
     column-count: 2;
     column-gap: 2em;
