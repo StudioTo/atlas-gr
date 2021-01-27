@@ -1,96 +1,99 @@
 <style>
-/* hide items */
+  /* hide items */
 
-a.no-link {
-  text-decoration: none;
-  cursor: text;
-}
+  a.no-link {
+    text-decoration: none;
+    cursor: text;
+  }
 
-.profs,
-.profs-visible,
-.profs-visible-cell {
-  display: none;
-}
+  .profs,
+  .profs-visible,
+  .profs-visible-cell {
+    display: none;
+  }
 
-.edit-link {
-  display: none;
-}
-
+  .edit-link {
+    display: none;
+  }
 </style>
 
 <script>
 
-var access_admin = "";
-var access_profs = "";
-{% if site.access_admin %}
+  var access_admin = "";
+  var access_profs = "";
+  {% if site.access_admin %}
   access_admin = "{{ site.access_admin }}";
-{% endif %}
-{% if site.access_profs %}
+  {% endif %}
+  {% if site.access_profs %}
   access_profs = "{{ site.access_profs }}";
-{% endif %}
+  {% endif %}
 
-// Retrieving URL Parameters
+  // Retrieving URL Parameters
 
-const urlParams = new URLSearchParams(window.location.search)
-const access = urlParams.get('vue');
-const tableLinks = document.querySelectorAll("a.no-link");
+  const urlParams = new URLSearchParams(window.location.search)
+  const access = urlParams.get('vue');
+  const tableLinks = document.querySelectorAll("a.no-link");
 
-
-for (var i = 0; i < tableLinks.length; i++) {
-  tableLinks[i].addEventListener("click", disabledLink);
-}
-
-function disabledLink(event) {
-  event.preventDefault();
-}
-
-function activateLinks() {
 
   for (var i = 0; i < tableLinks.length; i++) {
-    tableLinks[i].href = tableLinks[i].dataset.link;
-    tableLinks[i].classList.remove("no-link");
-    tableLinks[i].removeEventListener("click", disabledLink);
+    tableLinks[i].addEventListener("click", disabledLink);
   }
 
-}
-
-function showItems(hiddenClass, displayMode) {
-  var hiddenItems = document.getElementsByClassName(hiddenClass);
-  for (var i = 0; i < hiddenItems.length; i++) {
-    hiddenItems[i].style.display = displayMode;
+  function disabledLink(event) {
+    event.preventDefault();
   }
-}
 
-if (access == access_profs) {
+  function activateLinks() {
 
-  // rendre visible
-  activateLinks();
-  showItems("profs-visible", "block");
-  showItems("profs-visible-cell", "table-cell");
+    for (var i = 0; i < tableLinks.length; i++) {
+      tableLinks[i].href = tableLinks[i].dataset.link;
+      tableLinks[i].classList.remove("no-link");
+      tableLinks[i].removeEventListener("click", disabledLink);
+    }
 
-} else if (access == access_admin) {
-
-  // rendre visible:
-  activateLinks();
-
-  showItems("profs-visible", "block");
-  showItems("profs-visible-cell", "table-cell");
-
-  // lien édition .edit-link
-  showItems("edit-link", "block");
-
-  // .profs
-  showItems("profs", "block");
-
-}
-
-if (access) {
-  // ajouter le paramètre sur tous les liens
-  var anchors = document.getElementsByTagName("a");
-
-  for (var i = 0; i < anchors.length; i++) {
-    anchors[i].href = anchors[i].href + "?" + urlParams;
   }
-}
+
+  function showItems(hiddenClass, displayMode) {
+    var hiddenItems = document.getElementsByClassName(hiddenClass);
+    for (var i = 0; i < hiddenItems.length; i++) {
+      hiddenItems[i].style.display = displayMode;
+    }
+  }
+
+  if (access == access_profs) {
+
+    // rendre visible
+    activateLinks();
+    showItems("profs-visible", "block");
+    showItems("profs-visible-cell", "table-cell");
+
+  } else if (access == access_admin) {
+
+    // rendre visible:
+    activateLinks();
+
+    showItems("profs-visible", "block");
+    showItems("profs-visible-cell", "table-cell");
+
+    // lien édition .edit-link
+    showItems("edit-link", "block");
+
+    // .profs
+    showItems("profs", "block");
+
+  }
+
+  if (access) {
+    // ajouter le paramètre sur tous les liens
+    var anchors = document.getElementsByTagName("a");
+
+    for (var i = 0; i < anchors.length; i++) {
+
+      // Ne pas ajouter le paramètre sur des liens sortants.
+      if (anchors[i].href.indexOf("http") == -1) {
+        anchors[i].href = anchors[i].href + "?" + urlParams;
+      }
+    }
+  }
 
 </script>
