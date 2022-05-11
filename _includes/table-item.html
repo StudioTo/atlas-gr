@@ -16,10 +16,14 @@
   </td>
   <td class="periodes profs-visible-cell">
   {% if page.periodes %}
-    {{ page.periodes }} p.
-    {% assign periodesCours = page.periodes %}
+    {% if page.periodes != 0 %}
+      {{ page.periodes }} p.
+      {% assign periodesCours = page.periodes %}
+    {% endif %}
   {% else if periodesCours %}
-    {{ periodesCours }} p.
+    {% if periodesCours != 0 %}
+      {{ periodesCours }} p.
+    {% endif %}
   {% endif %}
   </td>
 </tr>

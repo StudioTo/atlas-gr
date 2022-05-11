@@ -23,9 +23,11 @@ Metadata pour un cours - sous forme de Front Matter
   {% endif %}
 
   {% if page.periodes %}
+    {% if page.periodes != 0 %}
   <section class="meta-section profs-visible">
     <p>{{ page.periodes }} périodes</p>
   </section>
+    {% endif %}
   {% else %}
   {% if page.competences %}
   <section class="meta-section">
