@@ -22,7 +22,7 @@
 
       {% assign cours = site.pages | where: "layout", "cours" | sort: ordre %}{% comment %} Liste de tous les cours {% endcomment %}
 
-      {% assign compSubpage = site.pages | where: 'title', 'Compétences' %}
+      {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
       {% assign compArray = compSubpage[0].comp %}
 
       {% if page contains "cursus" %}

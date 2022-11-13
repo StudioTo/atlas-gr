@@ -14,7 +14,7 @@
     <main class="main-content" id="content" role="main">
       {{ content }}
       
-      {% assign compSubpage = site.pages | where: 'title', 'Compétences' %}
+      {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
       {% assign compArray = compSubpage[0].comp %}
 
       {% assign cours = site.pages | where: "layout", "cours" %}

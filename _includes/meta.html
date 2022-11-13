@@ -73,7 +73,7 @@ Metadata pour un cours - sous forme de Front Matter
   <section class="meta-section meta-competences profs-visible">
     <h2>Objectifs évaluateurs</h2>
 
-    {% assign compSubpage = site.pages | where: 'title', 'Compétences' %}
+    {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
     {% assign compArray = compSubpage[0].comp %}
 
     {% include meta-competences.html compArray=compArray %}
