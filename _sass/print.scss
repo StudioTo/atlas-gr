@@ -58,17 +58,19 @@
     content: " – ";
   }
 
-  .project-name,
-  h1 {
-    font-size: 10pt;
-  }
+  
 
   .body-cours .project-name,
   .body-cours h1,
-  .body-default .project-nam,
+  .body-default .project-name,
   .body-default h1,
   h1, h2 {
     font-size: 14pt;
+  }
+
+  .project-name,
+  .global h1 {
+    font-size: 10pt;
   }
 
   .main-content-cours .cours-meta {
