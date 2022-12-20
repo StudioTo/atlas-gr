@@ -45,7 +45,7 @@
   }
 
   .page-header {
-    padding-left: 0;
+    padding-left: 1rem;
     padding-right: 2pt;
     float: left;
   }
@@ -62,7 +62,8 @@
   .body-cours .project-name,
   .body-cours h1,
   .body-default .project-nam,
-  .body-default h1 {
+  .body-default h1,
+  h1, h2 {
     font-size: 14pt;
   }
 
@@ -113,5 +114,9 @@
 
   .edit-link {
     display: none !important;
+  }
+
+  .site-footer {
+    display: none;
   }
 }
