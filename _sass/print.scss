@@ -45,9 +45,13 @@
   }
 
   .page-header {
-    padding-left: 1rem;
+    padding-left: 0;
     padding-right: 2pt;
     float: left;
+  }
+
+  .global .main-content {
+    padding: 0;
   }
 
   .project-name::after {
