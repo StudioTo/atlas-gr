@@ -51,14 +51,12 @@
   }
 
   .global .main-content {
-    padding: 0;
+    padding: 1px;
   }
 
   .project-name::after {
     content: " – ";
   }
-
-  
 
   .body-cours .project-name,
   .body-cours h1,
