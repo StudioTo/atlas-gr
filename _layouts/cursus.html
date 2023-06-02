@@ -20,13 +20,15 @@
         {% assign ordre = "title" %}
       {% endif %}
 
-      {% assign cours = site.pages | where: "layout", "cours" | sort: ordre %}{% comment %} Liste de tous les cours {% endcomment %}
+      {% assign cours = site.pages | where: "layout", "cours" | sort: ordre %}
+      {% comment %} Liste de tous les cours {% endcomment %}
 
       {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
       {% assign compArray = compSubpage[0].comp %}
 
       {% if page contains "cursus" %}
         {% assign cursus = page.cursus %}
+        {% comment %} Variable cursus, p.ex. FPC, Dual... {% endcomment %}
       {% endif %}
 
       {% if page contains "semestres" %}
