@@ -7,8 +7,9 @@
 
     <a class="edit-link" href="{{ site.github.repository_url }}/edit/{{ site.github.source.branch }}/{{ page.path }}">Modifier cette page</a>
   {% endif %}
-
-  Dernière modification: {% page.last_modified_at %}
+  {% if page.last_modified_at %}
+  Dernière modification: {{ page.last_modified_at }}
+  {% endif %}
 </footer>
 
 {% if site.access_admin %}
