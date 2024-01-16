@@ -10,7 +10,7 @@
           {% if item.[{{cursus}}] == semestre %}
             {% include table-item.html compArray=include.compArray %}
             {% assign periodes = periodes | plus: periodesCours %}
-            {% if page.type == "EP" %}
+            {% if page.type == "30-EP" %}
               {% assign periodes_EP = periodes_EP | plus: periodesCours %}
             {% endif %}
             {% if page.type == "AP" %}
