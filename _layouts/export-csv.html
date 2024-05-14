@@ -1,0 +1,5 @@
+Titre,Type,Code,Periodes,Lien
+{%- assign cours = site.pages | where: "layout", "cours" | sort: "title" -%}
+{% for page in cours %}
+"{{page.title}}",{{ page.type }},{{ page.code }},{{ page.periodes }},{{site.url}}{{page.url}}
+{%- endfor -%}
