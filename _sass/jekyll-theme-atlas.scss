@@ -127,6 +127,10 @@ a {
 
 /* Table Style */
 
+.main-content table {
+  display: table;
+}
+
 .main-content table th,
 .main-content table td {
   border-color: $black;
