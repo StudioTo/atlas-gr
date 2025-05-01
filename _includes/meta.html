@@ -63,7 +63,18 @@ Metadata pour un cours - sous forme de Front Matter
       {% endfor %}
     </ul>
   </section>
-{% endif %}
+  {% endif %}
+
+  {% if page.competences %}
+  <section class="meta-section meta-competences profs-visible">
+    <h2>Compétences</h2>
+
+    {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
+    {% assign compArray = compSubpage[0].comp %}
+
+    {% include meta-competences.html compArray=compArray %}
+  </section>
+  {% endif %}
 
   {% if page.validation %}
     {% if page.validation != 0 %}
@@ -95,17 +106,6 @@ Metadata pour un cours - sous forme de Front Matter
         </ul>
       </section>
     {% endif %}
-  {% endif %}
-
-  {% if page.competences %}
-    <section class="meta-section meta-competences profs-visible">
-      <h2>Compétences</h2>
-
-      {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
-      {% assign compArray = compSubpage[0].comp %}
-
-      {% include meta-competences.html compArray=compArray %}
-    </section>
   {% endif %}
 
   {% if page.profs %}
