@@ -70,13 +70,9 @@ Metadata pour un cours - sous forme de Front Matter
       <section class="meta-section profs-visible">
         <h2>Validation</h2>
         <ul>
-          {% for item in page.criteres %}
-            {% for key in item %}
-              <li>
-                {{ key.last }} note(s)
-              </li>
-            {% endfor %}
-          {% endfor %}
+          {% if page.validation and page.validation != 0 %}
+            <li>{{ page.validation }} note(s)</li>
+          {% endif %}
         </ul>
       </section>
     {% endif %}
