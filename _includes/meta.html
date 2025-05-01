@@ -41,9 +41,9 @@ Metadata pour un cours - sous forme de Front Matter
       <section class="meta-section">
         {% assign c_periodes = 0 %}
         {% for item in page.competences %}
-        {% for key in item %}
-        {% assign c_periodes = c_periodes | plus: key.last %}
-        {% endfor %}
+          {% for key in item %}
+            {% assign c_periodes = c_periodes | plus: key.last %}
+          {% endfor %}
         {% endfor %}
         {{ c_periodes }}
         périodes<br />
