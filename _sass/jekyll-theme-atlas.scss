@@ -97,27 +97,33 @@ a {
   /* colonnes */
 
   @include medium {
-    column-count: 2;
-    column-gap: 3vw;
-    column-rule: 1px solid $black;
+    // column-count: 2;
+    // column-gap: 3vw;
+    // column-rule: 1px solid $black;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3vw;
   }
 
   @include large {
-    column-count: 3;
-    column-gap: 3vw;
-    column-rule: 1px solid $black;
+    // column-count: 3;
+    // column-gap: 3vw;
+    // column-rule: 1px solid $black;
   }
 
   .meta-section {
     margin-bottom: 0.5em;
-    -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-    break-inside: avoid;
+    flex: 1;
+    // -webkit-column-break-inside: avoid;
+    // page-break-inside: avoid;
+    // break-inside: avoid;
   }
 
   .meta-competences {
-    column-span: all;
-    margin-top: 1em;
+    width: 100%;
+    // column-span: all;
+    // margin-top: 1em;
+
   }
 }
 
