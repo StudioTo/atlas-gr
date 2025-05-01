@@ -22,18 +22,15 @@ Metadata pour un cours - sous forme de Front Matter
     </section>
   {% endif %}
 
-  {% if page.periodesHebdo or page.periodes %}
-    {% if page.periodesHebdo != 0 or page.periodes != 0 %}
-      <section class="meta-section profs-visible">
-        {% if page.periodesHebdo and page.periodesHebdo != 0 %}
-          <p>{{ page.periodesHebdo }} périodes / semaine</p>
-        {% endif %}
-        {% if page.periodes and page.periodes != 0 %}
-          <p>{{ page.periodes }} périodes / semestre</p>
-        {% endif %}
-      </section>
-  {% endif %}
-{% endif %}
+  {% if (page.periodesHebdo and page.periodesHebdo != 0) or (page.periodes and page.periodes != 0) %}
+    <section class="meta-section profs-visible">
+      {% if page.periodesHebdo and page.periodesHebdo != 0 %}
+        <p>{{ page.periodesHebdo }} périodes / semaine</p>
+      {% endif %}
+      {% if page.periodes and page.periodes != 0 %}
+        <p>{{ page.periodes }} périodes / semestre</p>
+      {% endif %}
+    </section>
   {% else %}
     {% if page.competences %}
       <section class="meta-section">
