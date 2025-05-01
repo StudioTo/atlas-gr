@@ -3,7 +3,7 @@
 Metadata pour un cours - sous forme de Front Matter
 
 {% endcomment %}
-{% assign timeunit = "Semestre" %}
+{% assign timeunit = "Cursus" %}
 {% if page.timeunit %}
 {% assign timeunit = page.timeunit %}
 {% endif %}
@@ -55,7 +55,15 @@ Metadata pour un cours - sous forme de Front Matter
     {% if page.validation != 0 %}
       <section class="meta-section profs-visible">
         <h2>Validation</h2>
-        <p>{{ page.validation }} note(s)</p>
+        <ul>
+          {% for item in page.criteres %}
+            {% for key in item %}
+              <li>
+                {{ key.last }} note(s)
+              </li>
+            {% endfor %}
+          {% endfor %}
+        </ul>
       </section>
     {% endif %}
   {% endif %}
@@ -64,14 +72,14 @@ Metadata pour un cours - sous forme de Front Matter
     {% if page.criteres != 0 %}
       <section class="meta-section profs-visible">
         <h2>Critères</h2>
-        <ul class="liste-horizontale">
+        <ul>
           {% for item in page.criteres %}
             {% for key in item %}
-            <li>
-              {{ key.first }}
-              :
-              {{ key.last }}
-            </li>
+              <li>
+                {{ key.first }}
+                :
+                {{ key.last }} pts
+              </li>
             {% endfor %}
           {% endfor %}
         </ul>
@@ -98,7 +106,7 @@ Metadata pour un cours - sous forme de Front Matter
 
   {% if page.profs %}
     <section class="profs meta-section">
-      <h2>Profs</h2>
+      <h2>Enseignant.e.s</h2>
       <ul class="liste-horizontale">
         {% for item in page.profs %}
           <li>{{ item }}</li>
@@ -109,7 +117,7 @@ Metadata pour un cours - sous forme de Front Matter
 
   {% if page.competences %}
     <section class="meta-section meta-competences profs-visible">
-      <h2>Objectifs évaluateurs</h2>
+      <h2>Compétences</h2>
 
       {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
       {% assign compArray = compSubpage[0].comp %}
