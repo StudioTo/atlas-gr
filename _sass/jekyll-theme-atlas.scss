@@ -132,22 +132,6 @@ a {
 
   }
 
-  table.competences {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-    margin: 0;
-  }
-
-  table.competences td {
-    border: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  table.competences .data-nbr {
-    padding-right: 1em;
-  }
 }
 
 .main-content-columns {
@@ -207,6 +191,23 @@ a {
 
 .description {
   padding: 0 1.5em 1em;
+}
+
+table.competences {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin: 0;
+}
+
+table.competences td {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+table.competences .data-nbr {
+  padding-right: 1em;
 }
 
 /* Couleur des branches AP */
