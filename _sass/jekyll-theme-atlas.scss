@@ -125,6 +125,12 @@ a {
     // margin-top: 1em;
 
   }
+
+  ul.meta-section {
+    list-style-type: none;
+    padding-left: 0; /* Optional: removes default left indent */
+    margin: 0; 
+  }
 }
 
 .main-content-columns {
