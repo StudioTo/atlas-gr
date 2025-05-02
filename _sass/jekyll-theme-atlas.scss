@@ -214,8 +214,12 @@ table.competences .data-nbr {
 
 .cursus table.competences {
   font-size: 0.8em;
-  margin-left: 2em;
+  padding-left: 2em;
   margin-bottom: 1em;
+}
+
+.cursus table.competences tr {
+  padding-left: 2em;
 }
 
 .cursus table.competences .data-nbr {
