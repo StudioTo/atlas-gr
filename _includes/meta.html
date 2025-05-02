@@ -3,7 +3,7 @@
 Metadata pour un cours - sous forme de Front Matter
 
 {% endcomment %}
-{% assign timeunit = "Cursus" %}
+{% assign timeunit = "Calendrier" %}
 {% if page.timeunit %}
 {% assign timeunit = page.timeunit %}
 {% endif %}
@@ -55,8 +55,7 @@ Metadata pour un cours - sous forme de Front Matter
       {% for item in page.cursus %}
         {% for key in item %}
           <li>
-            {{ key.first }}
-            :
+            {{ key.first }}:
             {{ key.last }}
           </li>
         {% endfor %}
@@ -82,7 +81,7 @@ Metadata pour un cours - sous forme de Front Matter
         <h2>Validation</h2>
         <ul>
           {% if page.validation and page.validation != 0 %}
-            <li>{{ page.validation }} note(s)</li>
+            <li>{{ page.validation }} note(s) / semestre</li>
           {% endif %}
         </ul>
       </section>
@@ -97,8 +96,7 @@ Metadata pour un cours - sous forme de Front Matter
           {% for item in page.criteres %}
             {% for key in item %}
               <li>
-                {{ key.first }}
-                :
+                {{ key.first }}:
                 {{ key.last }} pts
               </li>
             {% endfor %}
