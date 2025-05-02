@@ -125,15 +125,24 @@ a {
     margin: 0; 
   }
 
-  .meta-section table {
-    border-collapse: collapse; width: 100%;
-  }
-
   .meta-competences {
     width: 100%;
     // column-span: all;
     // margin-top: 1em;
 
+  }
+
+  table.competences {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    margin: 0;
+  }
+
+  table.competences td {
+    border: none;
+    padding: 0;
+    margin: 0;
   }
 }
 
