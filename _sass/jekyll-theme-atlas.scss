@@ -226,17 +226,17 @@ table.competences .data-nbr {
   padding-right: .5em;
 }
 
-.objectifs.competences table {
+table.objectifs.competences  {
   border-color: $black;
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-.objectifs.competences table td {
+table.objectifs.competences td {
   padding: 1rem;
 }
 
-.objectifs.competences table a {
+table.objectifs.competences a {
   color: #333;
   display: block;
 }
