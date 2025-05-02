@@ -6,15 +6,21 @@
 
   {% for key in item %}
   {% assign definition = "" %}
-  {% assign definition = include.compArray[key.first] | prepend: " – " %}
+  {% assign definition = include.compArray[key.first] %}
 
   <li>
-    <span data-comp="{{ key.first }}">{{ key.first }}{{ definition }}
+    <span data-comp="{{ key.first }}">
+      {{ key.first }}{{ definition }}
+    </span>
+    <span class="tab"></span>
+    <span>
+      {{ definition }}
     </span>
     :
     {{ key.last }}
     p.
   </li>
+
   {% assign periodesCours = periodesCours | plus: key.last %}
   {% endfor %}
   {% endfor %}

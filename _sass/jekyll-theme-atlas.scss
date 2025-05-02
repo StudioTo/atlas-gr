@@ -119,17 +119,21 @@ a {
     // break-inside: avoid;
   }
 
+  .meta-section ul {
+    list-style-type: none;
+    padding-left: 0; /* Optional: removes default left indent */
+    margin: 0; 
+  }
+
+  .meta-section .tab {
+    
+  }
+
   .meta-competences {
     width: 100%;
     // column-span: all;
     // margin-top: 1em;
 
-  }
-
-  ul.meta-section {
-    list-style-type: none;
-    padding-left: 0; /* Optional: removes default left indent */
-    margin: 0; 
   }
 }
 
