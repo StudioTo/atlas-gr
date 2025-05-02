@@ -222,6 +222,21 @@ table.competences .data-nbr {
   padding-right: .5em;
 }
 
+.objectifs.competences table {
+  border-color: $black;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.objectifs.competences table td {
+  padding: 1rem;
+}
+
+.objectifs.competences table a {
+  color: #333;
+  display: block;
+}
+
 /* Couleur des branches AP */
 
 .table-item {
