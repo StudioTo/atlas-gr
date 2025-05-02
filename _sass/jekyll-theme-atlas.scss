@@ -193,6 +193,8 @@ a {
   padding: 0 1.5em 1em;
 }
 
+/* Table Style Competences */
+
 table.competences {
   border-collapse: collapse;
   border-spacing: 0;
@@ -208,6 +210,16 @@ table.competences td {
 
 table.competences .data-nbr {
   padding-right: 1em;
+}
+
+.cursus table.competences {
+  font-size: 0.8em;
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+
+.cursus table.competences .data-nbr {
+  padding-right: .5em;
 }
 
 /* Couleur des branches AP */
