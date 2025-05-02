@@ -92,6 +92,17 @@ Metadata pour un cours - sous forme de Front Matter
     {% endif %}
   {% endif %}
 
+  {% if page.profs %}
+  <section class="meta-section profs-visible">
+    <h2>Domaine</h2>
+    <ul>
+      {% for item in page.domaines %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
   {% if page.competences %}
   <section class="meta-section meta-competences profs-visible">
     <h2>Compétences</h2>
