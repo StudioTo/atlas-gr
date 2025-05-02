@@ -85,7 +85,7 @@ a {
   border: 2px solid $black;
   display: flex;
   flex-wrap: wrap;
-  gap: 3vw;
+  gap: 4vw;
 
   h2 {
     margin-top: 0;
@@ -113,7 +113,7 @@ a {
 
   .meta-section {
     margin-bottom: 0.5em;
-    flex: 1;
+    // flex: 1;
     // -webkit-column-break-inside: avoid;
     // page-break-inside: avoid;
     // break-inside: avoid;
