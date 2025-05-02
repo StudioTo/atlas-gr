@@ -1,26 +1,21 @@
 {% assign periodesCours = 0 %}
 
 {% if page.competences %}
-<ul class="competences details">
+<table class="competences">
   {% for item in page.competences %}
+    {% for key in item %}
+      {% assign definition = "" %}
+      {% assign definition = include.compArray[key.first] %}
 
-  {% for key in item %}
-  {% assign definition = "" %}
-  {% assign definition = include.compArray[key.first] %}
+      <tr>
+        <td data-comp="{{ key.first }}">{{ key.first }}</td>
+      </tr>
+      <tr>
+        <td>{{ definition }} ({{ key.last }}p.)</td>
+      </tr>
 
-  <li>
-    <span data-comp="{{ key.first }}">
-      {{ key.first }}
-    </span>
-    <span class="tab"></span>
-    <span>
-      {{ definition }}
-    </span>
-    ({{ key.last }}p.)
-  </li>
-
-  {% assign periodesCours = periodesCours | plus: key.last %}
+      {% assign periodesCours = periodesCours | plus: key.last %}
+    {% endfor %}
   {% endfor %}
-  {% endfor %}
-</ul>
+</table>
 {% endif %}

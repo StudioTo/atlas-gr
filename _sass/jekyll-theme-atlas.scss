@@ -125,9 +125,8 @@ a {
     margin: 0; 
   }
 
-  .meta-section span.tab {
-    display: inline-block;
-    width: 1em; /* adjust as needed */
+  .meta-section table {
+    border-collapse: collapse; width: 100%;
   }
 
   .meta-competences {
