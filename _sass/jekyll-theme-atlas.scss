@@ -83,6 +83,9 @@ a {
   background: $pale;
   padding: 1.5rem;
   border: 2px solid $black;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3vw;
 
   h2 {
     margin-top: 0;
@@ -100,9 +103,6 @@ a {
     // column-count: 2;
     // column-gap: 3vw;
     // column-rule: 1px solid $black;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3vw;
   }
 
   @include large {
