@@ -13,26 +13,24 @@ Metadata pour un cours - sous forme de Front Matter
   if page.matiere %}matiere-{{ page.matiere }} {% endif 
   %}cours-meta">
 
-  {% if page.code %}
-    <section class="meta-section">
-      {% assign acronymSubpage = site.pages | where: 'title', 'Acronymes' %}
-      {% assign acronymArray = acronymSubpage[0].acronymes %}
-
-      {% include acronymes.html acronymArray=acronymArray %}
-    </section>
-  {% endif %}
-
   {% if (page.periodesHebdo and page.periodesHebdo != 0) or (page.periodes and page.periodes != 0) %}
-    <section class="meta-section profs-visible">
-      <ul>
-        {% if page.periodesHebdo and page.periodesHebdo != 0 %}
-          <li>{{ page.periodesHebdo }} périodes / semaine</li>
-        {% endif %}
-        {% if page.periodes and page.periodes != 0 %}
-          <li>{{ page.periodes }} périodes / semestre</li>
-        {% endif %}
-      </ul>
-    </section>
+  <section class="meta-section profs-visible">
+    <h2>
+      {% if page.code %}
+        {% assign acronymSubpage = site.pages | where: 'title', 'Acronymes' %}
+        {% assign acronymArray = acronymSubpage[0].acronymes %}
+        {% include acronymes.html acronymArray=acronymArray %}
+      {% endif %}
+    </h2>
+    <ul>
+      {% if page.periodesHebdo and page.periodesHebdo != 0 %}
+        <li>{{ page.periodesHebdo }} périodes / semaine</li>
+      {% endif %}
+      {% if page.periodes and page.periodes != 0 %}
+        <li>{{ page.periodes }} périodes / semestre</li>
+      {% endif %}
+    </ul>
+  </section>
   {% else %}
     {% if page.competences %}
       <section class="meta-section">
@@ -42,8 +40,7 @@ Metadata pour un cours - sous forme de Front Matter
             {% assign c_periodes = c_periodes | plus: key.last %}
           {% endfor %}
         {% endfor %}
-        {{ c_periodes }}
-        périodes<br />
+        {{ c_periodes }} périodes<br />
       </section>
     {% endif %}
   {% endif %}
