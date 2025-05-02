@@ -10,15 +10,13 @@
 
   <li>
     <span data-comp="{{ key.first }}">
-      {{ key.first }}{{ definition }}
+      {{ key.first }}
     </span>
     <span class="tab"></span>
     <span>
       {{ definition }}
     </span>
-    :
-    {{ key.last }}
-    p.
+    : {{ key.last }} p.
   </li>
 
   {% assign periodesCours = periodesCours | plus: key.last %}
