@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: " fr" }}">
+
+<head>
+  {% include header.html %}
+</head>
+
+<body class="body-liste">
+
+  <header class="page-header" role="banner">
+    <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
+    <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
+    {% include nav.html %}
+  </header>
+
+  <main class="main-content" id="content" role="main">
+    {{ content }}
+
+    {% if page contains "ordre" %}
+    {% assign ordre = page.ordre %}
+    {% else %}
+    {% assign ordre = "title" %}
+    {% endif %}
+
+    {% if page contains "type" %}
+    {% assign type = page.type %}
+    {% assign cours = site.pages | where: "layout", "cours" | where: "type", type | sort: ordre %}
+    {% else %}
+    {% assign cours = site.pages | where: "layout", "cours" | sort: ordre %}
+    {% endif %}
+
+
+    {% assign periodes = 0 %}
+
+    {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
+    {% assign compArray = compSubpage[0].comp %}
+
+    <table class="cursus">
+
+      {% for page in cours %}
+      <!-- {% include table-item.html compArray=compArray %} -->
+      {% assign periodes = periodes | plus: periodesCours %}
+      {% endfor %}
+
+    </table>
+
+    <p>Nombre total de périodes:
+      {{ periodes }}</p>
+
+    {% include footer.html %}
+  </main>
+</body>
+
+</html>
