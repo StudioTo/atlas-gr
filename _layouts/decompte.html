@@ -40,6 +40,7 @@
           {% for domaine in domaines %}
             {% for page in cours %}
               {% if page.domaine contains domaine %}
+                {% assign cursus_str = page.cursus | jsonify %}  {# Convert object to string for simpler checks #}
                 <tr class="table-item">
                   <td>{{ domaine }}</td>
                   <td>
@@ -52,23 +53,10 @@
                   <td>{{ page.title }}</td>
 
                   {% for s in semestres %}
-                    {% assign in_semestre = false %}
-                    {% if page.cursus %}
-                      {% for item in page.cursus %}
-                        {% assign keys = item | keys %}
-                        {% assign key = keys[0] %}
-                        {% assign value = item[key] %}
-                        {% if value == s %}
-                          {% assign in_semestre = true %}
-                        {% endif %}
-                      {% endfor %}
-                    {% endif %}
-
                     <td>
-                      {% if in_semestre %}
-                        {% assign hebdo = page.periodesHebdo | default: 0 %}
+                      {% if cursus_str contains s %}
+                        {% assign hebdo = page.periodesHebdo | plus: 0 %}
                         {{ hebdo }}
-                        
                         {% if page.type == "30-EP" %}
                           {% case s %}
                             {% when "S1" %}{% assign total_S1 = total_S1 | plus: hebdo %}
