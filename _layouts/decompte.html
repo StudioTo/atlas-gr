@@ -14,6 +14,8 @@
       {{ content }}
 
       <section class="section-cursus">
+        {% assign cursus = page.cursus %}
+        {% assign selected_cursus = page.cursus %}
         {% assign cours = site.pages | where: "layout", "cours-alt-1" %}
         {% assign semestres = "S1,S2,S3,S4,S5,S6,S7,S8" | split: "," %}
         {% assign domaines = "Gestion,Conception,Réalisation" | split: "," %}
@@ -40,7 +42,15 @@
           {% for domaine in domaines %}
             {% assign first_row = true %}
             {% for page in cours %}
-              {% if page.domaine contains domaine %}
+              {% if page.domaine contains domaine and page.cursus %}
+                {% assign match = false %}
+                {% for item in page.cursus %}
+                  {% assign name = item[0] %}
+                  {% if name == selected_cursus %}
+                    {% assign match = true %}
+                  {% endif %}
+                {% endfor %}
+                {% if match %}
                 {% assign cursus_str = page.cursus | jsonify %}
                 <tr class="table-item{% if first_row %} first-in-domain{% endif %}">
                   <td class="head">{{ domaine }}</td>
@@ -75,6 +85,7 @@
                   {% endfor %}
                 </tr>
                 {% assign first_row = false %}
+                {% endif %}
               {% endif %}
             {% endfor %}
           {% endfor %}
