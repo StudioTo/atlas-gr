@@ -45,8 +45,8 @@
               {% if page.domaine contains domaine and page.cursus %}
                 {% assign match = false %}
                 {% for item in page.cursus %}
-                  {% assign name = item[0] %}
-                  {% if name == selected_cursus %}
+                  {% assign pair_str = item | jsonify %}
+                  {% if pair_str contains selected_cursus %}
                     {% assign match = true %}
                   {% endif %}
                 {% endfor %}
