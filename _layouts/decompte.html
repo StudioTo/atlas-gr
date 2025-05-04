@@ -1,89 +1,23 @@
-<h1>Décompte des heures</h1>
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    {% include header.html %}
+  </head>
+  <body class="global">
 
-{% assign selected_cursus = 'Duals' %}
-{% assign selected_semestres = page.semestres | split: ',' %}
+    <header class="page-header" role="banner">
+      <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
+      <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
+      {% include nav.html %}
+    </header>
 
-{% assign all_cours = site.cours %}
+    <main class="main-content global" id="content" role="main">
+      {{ content }}
 
-{%- comment -%}
-  Collect all domaines used in courses of this cursus
-{%- endcomment -%}
-{% assign domaines = "" | split: "" %}
-{% for cours in all_cours %}
-  {% for entry in cours.cursus %}
-    {% if entry[selected_cursus] %}
-      {% for d in cours.domaine %}
-        {% unless domaines contains d %}
-          {% assign domaines = domaines | push: d %}
-        {% endunless %}
-      {% endfor %}
-    {% endif %}
-  {% endfor %}
-{% endfor %}
-
-<table>
-  <thead>
-    <tr>
-      <th>Domaine</th>
-      <th>Acronyme</th>
-      <th>Titre</th>
-      {% for semestre in selected_semestres %}
-        <th>{{ semestre }}</th>
-      {% endfor %}
-    </tr>
-  </thead>
-  <tbody>
-    {% assign total_par_semestre = {} %}
-
-    {% for domaine in domaines %}
-      {% assign cours_domaine = "" | split: "" %}
-
-      {% for cours in all_cours %}
-        {% if cours.domaine contains domaine %}
-          {% for entry in cours.cursus %}
-            {% if entry[selected_cursus] %}
-              {% assign cours_domaine = cours_domaine | push: cours %}
-              {% break %}
-            {% endif %}
-          {% endfor %}
-        {% endif %}
-      {% endfor %}
-
-      {% if cours_domaine.size > 0 %}
-        <tr>
-          <td colspan="{{ 3 | plus: selected_semestres.size }}"><strong>{{ domaine }}</strong></td>
-        </tr>
-
-        {% for cours in cours_domaine %}
-          <tr>
-            <td></td>
-            <td>{{ cours.code }}</td>
-            <td>{{ cours.title }}</td>
-            {% for semestre in selected_semestres %}
-              {% assign heures = 0 %}
-              {% for entry in cours.cursus %}
-                {% if entry[selected_cursus] == semestre %}
-                  {% assign heures = cours.periodesHebdo %}
-                {% endif %}
-              {% endfor %}
-              <td>{{ heures }}</td>
-
-              {% assign current_total = total_par_semestre[semestre] | default: 0 %}
-              {% assign updated_total = current_total | plus: heures %}
-              {% assign total_par_semestre = total_par_semestre | merge: { semestre => updated_total } %}
-            {% endfor %}
-          </tr>
-        {% endfor %}
-      {% endif %}
-    {% endfor %}
-  </tbody>
-
-  <tfoot>
-    <tr>
-      <td colspan="3"><strong>Total par semestre</strong></td>
-      {% for semestre in selected_semestres %}
-        <td><strong>{{ total_par_semestre[semestre] | default: 0 }}</strong></td>
-      {% endfor %}
-    </tr>
-  </tfoot>
-</table>
+      {% include cursus-loop-decompte.html compArray=compArray %}
+        
+      {% include footer.html %}
+    </main>
+    </body>
+  </body>
+</html>
