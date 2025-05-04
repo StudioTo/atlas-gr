@@ -81,7 +81,7 @@ a {
 .cours-meta {
   font-size: 1rem;
   background: $pale;
-  padding: 1.5rem;
+  padding: 0;
   border: 2px solid $black;
 
   h2 {
@@ -129,6 +129,10 @@ a {
 
   }
 
+  .profs {
+    margin-top: 1px solid $black;
+  }
+
 }
 
 .main-content-columns {
@@ -144,7 +148,7 @@ a {
 }
 
 .flex-box {
-  padding: 1em;
+  padding: 2em;
   box-sizing: border-box;
   border: none;
 }
