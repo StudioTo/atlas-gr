@@ -17,12 +17,12 @@
       {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
       {% assign compArray = compSubpage[0].comp %}
 
-      {% assign cours = site.pages | where: "layout", "cours-alt-1" %}
+      {% assign cours = site.pages | where: "layout", "cours" %}
 
       <table class="objectifs competences">
 
         {% for competence in compArray %}
-          {% include table-item-comp-alt-1.html competence=competence cours=cours-alt-1 %}
+          {% include table-item-comp-alt-1.html competence=competence cours=cours %}
         {% endfor %}
 
       </table>

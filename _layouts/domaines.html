@@ -17,7 +17,7 @@
       
       {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
       {% assign comps = compSubpage[0].comp %}
-      {% assign cours = site.pages | where: "layout", "cours" %}
+      {% assign cours = site.pages | where: "layout", "cours-alt-1" %}
       
       {% for domaine in comps %}
         <h1>Domaine: {{ domaine.domaine }}</h1>
