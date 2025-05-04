@@ -27,8 +27,8 @@
         {% assign total_S7 = 0 %}
         {% assign total_S8 = 0 %}
 
-        <table class="cursus">
-          <tr class="table-item">
+        <table class="cursus decompte">
+          <tr class="table-item decompte-header">
             <td>Domaine</td>
             <td>Code</td>
             <td>Titre</td>
@@ -40,13 +40,13 @@
           {% for domaine in domaines %}
             {% for page in cours %}
               {% if page.domaine contains domaine %}
-                {% comment %} Convert object to string for simpler checks {% endcomment %}
+                <!-- {% comment %} Convert object to string for simpler checks {% endcomment %} -->
                 {% assign cursus_str = page.cursus | jsonify %}
                 <tr class="table-item">
                   <td>{{ domaine }}</td>
                   <td>
                     {% if page.url %}
-                      <a href="{{ page.url | relative_url }}" class="no-link bold">{{ page.code }}</a>
+                      <a href="{{unCours.url | relative_url}}" class="no-link" data-link="{{unCours.url | relative_url}}">{{ page.code }}</a>
                     {% else %}
                       {{ page.code }}
                     {% endif %}
@@ -78,8 +78,8 @@
             {% endfor %}
           {% endfor %}
 
-          <tr class="table-item">
-            <td><strong>TOTAL EP</strong></td>
+          <tr class="table-item decompte-footer">
+            <td></td>
             <td></td>
             <td></td>
             <td><strong>{{ total_S1 }}</strong></td>

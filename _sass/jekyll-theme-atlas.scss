@@ -283,6 +283,23 @@ table.objectifs.competences a {
   display: block;
 }
 
+/* Table Style Decompte */
+
+table.decompte {
+  font-size: 12px;
+  background-color: none;
+}
+
+table.decompte .decompte-header {
+  background-color: $grey;
+  font-weight: bold;
+}
+
+table.decompte .decompte-footer {
+  background-color: $grey;
+  font-weight: bold;
+}
+
 /* Couleur des branches AP */
 
 .table-item {
