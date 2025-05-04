@@ -140,7 +140,7 @@ a {
 .flex-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1vw; /* Optional spacing between items */
+  gap: 0; /* Optional spacing between items */
 }
 
 .flex-box {
