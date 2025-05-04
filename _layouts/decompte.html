@@ -42,8 +42,8 @@
             {% for page in cours %}
               {% if page.domaine contains domaine %}
                 {% assign cursus_str = page.cursus | jsonify %}
-                <tr class="table-item{% if first_row %}active{% endif %}">
-                  <td class="active">{{ domaine }}</td>
+                <tr class="table-item{% if first_row %}head{% endif %}">
+                  <td class="head">{{ domaine }}</td>
                   ...
                   {% for s in semestres %}
                     {% assign hebdo = page.periodesHebdo | plus: 0 %}
@@ -75,14 +75,14 @@
             <td></td>
             <td></td>
             <td></td>
-            <td class="active">{{ total_S1 }}</td>
-            <td class="active">{{ total_S2 }}</td>
-            <td class="active">{{ total_S3 }}</td>
-            <td class="active">{{ total_S4 }}</td>
-            <td class="active">{{ total_S5 }}</td>
-            <td class="active">{{ total_S6 }}</td>
-            <td class="active">{{ total_S7 }}</td>
-            <td class="active">{{ total_S8 }}</td>
+            <td class="head">{{ total_S1 }}</td>
+            <td class="head">{{ total_S2 }}</td>
+            <td class="head">{{ total_S3 }}</td>
+            <td class="head">{{ total_S4 }}</td>
+            <td class="head">{{ total_S5 }}</td>
+            <td class="head">{{ total_S6 }}</td>
+            <td class="head">{{ total_S7 }}</td>
+            <td class="head">{{ total_S8 }}</td>
           </tr>
         </table>
       </section>
