@@ -83,9 +83,6 @@ a {
   background: $pale;
   padding: 1.5rem;
   border: 2px solid $black;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4vw;
 
   h2 {
     margin-top: 0;
@@ -136,6 +133,34 @@ a {
 
 .main-content-columns {
   margin-top: 2rem;
+}
+
+/* Meta Flex-Box */
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1vw; /* Optional spacing between items */
+}
+
+.flex-box {
+  background: #ccc;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid #999;
+}
+
+/* Width classes */
+.box-25 {
+  flex: 0 0 25%;
+}
+
+.box-50 {
+  flex: 0 0 50%;
+}
+
+.box-100 {
+  flex: 0 0 100%;
 }
 
 /* Table Style */

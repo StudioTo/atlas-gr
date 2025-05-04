@@ -11,10 +11,10 @@ Metadata pour un cours - sous forme de Front Matter
   if page.code %}code-{{ page.code }} {% endif %}{% 
   if page.type %}type-{{ page.type }} {% endif %}{% 
   if page.matiere %}matiere-{{ page.matiere }} {% endif 
-  %}cours-meta">
+  %}cours-meta flex-container">
 
   {% if (page.periodesHebdo and page.periodesHebdo != 0) or (page.periodes and page.periodes != 0) %}
-  <section class="meta-section profs-visible">
+  <section class="meta-section profs-visible flex-box box-25">
     <h2>
       {% if page.code %}
         {% assign acronymSubpage = site.pages | where: 'title', 'Acronymes' %}
@@ -46,7 +46,7 @@ Metadata pour un cours - sous forme de Front Matter
   {% endif %}
 
   {% if page.cursus %}
-  <section class="meta-section">
+  <section class="meta-section flex-box box-25">
     <h2>{{ timeunit }}</h2>
     <ul>
       {% for item in page.cursus %}
@@ -63,7 +63,7 @@ Metadata pour un cours - sous forme de Front Matter
 
   {% if page.validation %}
     {% if page.validation != 0 %}
-      <section class="meta-section profs-visible">
+      <section class="meta-section profs-visible flex-box box-25">
         <h2>Validation</h2>
         <ul>
           {% if page.validation and page.validation != 0 %}
@@ -76,7 +76,7 @@ Metadata pour un cours - sous forme de Front Matter
 
   {% if page.criteres %}
     {% if page.criteres != 0 %}
-      <section class="meta-section profs-visible">
+      <section class="meta-section profs-visible flex-box box-25">
         <h2>Critères d’évaluation</h2>
         <ul>
           {% for item in page.criteres %}
@@ -93,7 +93,7 @@ Metadata pour un cours - sous forme de Front Matter
   {% endif %}
 
   {% if page.profs %}
-  <section class="meta-section profs-visible">
+  <section class="meta-section profs-visible flex-box box-25">
     <h2>Domaine</h2>
     <ul>
       {% for item in page.domaine %}
@@ -104,7 +104,7 @@ Metadata pour un cours - sous forme de Front Matter
   {% endif %}
 
   {% if page.competences %}
-  <section class="meta-section meta-competences profs-visible">
+  <section class="meta-section meta-competences profs-visible flex-box box-100">
     <h2>Compétences</h2>
 
     {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
@@ -115,7 +115,7 @@ Metadata pour un cours - sous forme de Front Matter
   {% endif %}
 
   {% if page.profs %}
-    <section class="profs meta-section">
+    <section class="profs meta-section flex-box box-25">
       <h2>Enseignant.e.s</h2>
       <ul>
         {% for item in page.profs %}
