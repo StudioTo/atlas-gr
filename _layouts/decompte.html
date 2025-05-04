@@ -1,451 +1,88 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    {% include header.html %}
-  </head>
-  <body class="global">
+<head>
+  {% include header.html %}
+</head>
+<body class="global">
 
-    <header class="page-header" role="banner">
-      <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
-      <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
-      {% include nav.html %}
-    </header>
+  <header class="page-header" role="banner">
+    <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
+    <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
+    {% include nav.html %}
+  </header>
 
-    <main class="main-content global" id="content" role="main">
-      {{ content }}
+  <main class="main-content global" id="content" role="main">
+    {{ content }}
 
-      <section class="section-cursus">
-        {% assign cours = site.pages | where: "layout", "cours-alt-1" | sort: ordre %}
-      
-        {% assign periodes_EP_S1 = 0 %}
-        {% assign periodes_EP_S2 = 0 %}
-        {% assign periodes_EP_S3 = 0 %}
-        {% assign periodes_EP_S4 = 0 %}
-        {% assign periodes_EP_S5 = 0 %}
-        {% assign periodes_EP_S6 = 0 %}
-        {% assign periodes_EP_S7 = 0 %}
-        {% assign periodes_EP_S8 = 0 %}
+    <section class="section-cursus">
+      {% assign cours = site.pages | where: "layout", "cours-alt-1" %}
+      {% assign domaines = "Gestion,Conception,Réalisation" | split: "," %}
+      {% assign semestres = "S1,S2,S3,S4,S5,S6,S7,S8" | split: "," %}
 
-          <table class="cursus">
+      {%- comment -%} Initialize EP period totals {%- endcomment -%}
+      {% assign periodes_EP_map = "" %}
+      {% for s in semestres %}
+        {% assign periodes_EP_map = periodes_EP_map | append: s | append: ":0," %}
+      {% endfor %}
+      {% assign periodes_EP_map = periodes_EP_map | split: "," %}
+      {% assign periodes_map = {} %}
+      {% for pair in periodes_EP_map %}
+        {% assign kv = pair | split: ":" %}
+        {% assign dummy = periodes_map[kv[0]] = kv[1] %}
+      {% endfor %}
+
+      <table class="cursus">
+        <tr class="table-item">
+          <th>Domaine</th>
+          <th>Code</th>
+          <th>Titre</th>
+          {% for s in semestres %}
+            <th>{{ s }}</th>
+          {% endfor %}
+        </tr>
+
+        {% for domaine in domaines %}
+          {% assign cours_domaine = cours | where: "domaine", domaine %}
+          {% for page in cours_domaine %}
             <tr class="table-item">
-              <td>
-                Domaine
-              </td>
-              <td>
-                Code
-              </td>
-              <td>
-                Titre
-              </td>
-              <td>
-                S1
-              </td>
-              <td>
-                S2
-              </td>
-              <td>
-                S3
-              </td>
-              <td>
-                S4
-              </td>
-              <td>
-                S5
-              </td>
-              <td>
-                S6
-              </td>
-              <td>
-                S7
-              </td>
-              <td>
-                S8
-              </td>
-            </tr>
-          {% for page in cours %}
-          {% if page.domaine == Gestion %}
-            <tr class="table-item">
-              <td>
-                Gestion
-              </td>
+              <td>{{ domaine }}</td>
               <td>
                 {% if page.code %}
-                <a href="{{page.url | relative_url}}" class="no-link bold" data-link="{{page.url | relative_url}}">{{page.code}}</a>
+                  <a href="{{ page.url | relative_url }}" class="no-link bold">{{ page.code }}</a>
                 {% endif %}
               </td>
-              <td>
-                {% if page.title %}
-                  {{page.title}}
-                {% endif %}
-              </td>
-              <td>
-              {% if page.cursus %}
-                {% for semestre in page.cursus %}
-                  {% if semestre == "S1" %}
-                    
-                      {{ page.periodesHebdo }}
-                      {% if page.type == "30-EP" %}
-                        {% assign periodes_EP_S1 = periodes_EP | plus: periodesHebdo %}
-                      {% endif %}
-                    
+              <td>{{ page.title }}</td>
+
+              {% for s in semestres %}
+                <td>
+                  {% assign displayed = false %}
+                  {% if page.cursus contains s %}
+                    {{ page.periodesHebdo }}
+                    {% assign displayed = true %}
+                    {% if page.type == "30-EP" %}
+                      {% assign current = periodes_map[s] | plus: page.periodesHebdo %}
+                      {% assign dummy = periodes_map[s] = current %}
+                    {% endif %}
                   {% endif %}
-                {% endfor %}
-              {% endif %}
-              </td>
-              <td>
-              {% if page.cursus %}
-              {% for semestre in page.cursus %}
-              {% if semestre == "S2" %}
-        
-              {{ page.periodesHebdo }}
-              {% if page.type == "30-EP" %}
-                {% assign periodes_EP = periodes_EP_S2 | plus: periodesHebdo %}
-              {% endif %}
-        
-              {% endif %}
+                </td>
               {% endfor %}
-              {% endif %}
-              </td>
-              <td>
-              {% if page.cursus %}
-              {% for semestre in page.cursus %}
-              {% if semestre == "S3" %}
-        
-              {{ page.periodesHebdo }}
-              {% if page.type == "30-EP" %}
-                {% assign periodes_EP = periodes_EP_S3 | plus: periodesHebdo %}
-              {% endif %}
-        
-              {% endif %}
-              {% endfor %}
-              {% endif %}
-              </td>
-              <td>
-              {% if page.cursus %}
-              {% for semestre in page.cursus %}
-              {% if semestre == "S4" %}
-        
-              {{ page.periodesHebdo }}
-              {% if page.type == "30-EP" %}
-                {% assign periodes_EP = periodes_EP_S4 | plus: periodesHebdo %}
-              {% endif %}
-        
-              {% endif %}
-              {% endfor %}
-              {% endif %}
-              </td>
-              <td>
-              {% if page.cursus %}
-              {% for semestre in page.cursus %}
-              {% if semestre == "S5" %}
-        
-              {{ page.periodesHebdo }}
-              {% if page.type == "30-EP" %}
-                {% assign periodes_EP = periodes_EP_S5 | plus: periodesHebdo %}
-              {% endif %}
-        
-              {% endif %}
-              {% endfor %}
-              {% endif %}
-              </td>
-              <td>
-              {% if page.cursus %}
-              {% for semestre in page.cursus %}
-              {% if semestre == "S6" %}
-        
-              {{ page.periodesHebdo }}
-              {% if page.type == "30-EP" %}
-                {% assign periodes_EP = periodes_EP_S6 | plus: periodesHebdo %}
-              {% endif %}
-        
-              {% endif %}
-              {% endfor %}
-              {% endif %}
-              </td>
-              <td>
-              {% if page.cursus %}
-              {% for semestre in page.cursus %}
-              {% if semestre == "S7" %}
-        
-              {{ page.periodesHebdo }}
-              {% if page.type == "30-EP" %}
-                {% assign periodes_EP = periodes_EP_S7 | plus: periodesHebdo %}
-              {% endif %}
-        
-              {% endif %}
-              {% endfor %}
-              {% endif %}
-              </td>
-              <td>
-              {% if page.cursus %}
-              {% for semestre in page.cursus %}
-              {% if semestre == "S8" %}
-        
-              {{ page.periodesHebdo }}
-              {% if page.type == "30-EP" %}
-                {% assign periodes_EP = periodes_EP_S8 | plus: periodesHebdo %}
-              {% endif %}
-        
-              {% endif %}
-              {% endfor %}
-              {% endif %}
-              </td>
-        
             </tr>
-          {% endif %}
-          <tr class="table-item">
-            <td>
-              TOTAL
-            </td>
-            <td>
-              
-            </td>
-            <td>
-              
-            </td>
-            <td>
-              {{ periodes_EP_S1 }}
-            </td>
-            <td>
-              {{ periodes_EP_S2 }}
-            </td>
-            <td>
-              {{ periodes_EP_S3 }}
-            </td>
-            <td>
-              {{ periodes_EP_S4 }}
-            </td>
-            <td>
-              {{ periodes_EP_S5 }}
-            </td>
-            <td>
-              {{ periodes_EP_S6 }}
-            </td>
-            <td>
-              {{ periodes_EP_S7 }}
-            </td>
-            <td>
-              {{ periodes_EP_S8 }}
-            </td>
-          </tr>
-          {% if page.domaine == Conception %}
-          <tr class="table-item">
-            <td>
-              Gestion
-            </td>
-            <td>
-              {% if page.code %}
-              <a href="{{page.url | relative_url}}" class="no-link bold" data-link="{{page.url | relative_url}}">{{page.code}}</a>
-              {% endif %}
-            </td>
-            <td>
-              {% if page.title %}
-                {{page.title}}
-              {% endif %}
-            </td>
-            <td>
-            {% if page.cursus %}
-              {% for semestre in page.cursus %}
-                {% if semestre == "S1" %}
-                  
-                    {{ page.periodesHebdo }}
-                  
-                {% endif %}
-              {% endfor %}
-            {% endif %}
-            </td>
-            <td>
-            {% if page.cursus %}
-            {% for semestre in page.cursus %}
-            {% if semestre == "S2" %}
-        
-            {{ page.periodesHebdo }}
-        
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            </td>
-            <td>
-            {% if page.cursus %}
-            {% for semestre in page.cursus %}
-            {% if semestre == "S3" %}
-        
-            {{ page.periodesHebdo }}
-        
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            </td>
-            <td>
-            {% if page.cursus %}
-            {% for semestre in page.cursus %}
-            {% if semestre == "S4" %}
-        
-            {{ page.periodesHebdo }}
-        
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            </td>
-            <td>
-            {% if page.cursus %}
-            {% for semestre in page.cursus %}
-            {% if semestre == "S5" %}
-        
-            {{ page.periodesHebdo }}
-        
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            </td>
-            <td>
-            {% if page.cursus %}
-            {% for semestre in page.cursus %}
-            {% if semestre == "S6" %}
-        
-            {{ page.periodesHebdo }}
-        
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            </td>
-            <td>
-            {% if page.cursus %}
-            {% for semestre in page.cursus %}
-            {% if semestre == "S7" %}
-        
-            {{ page.periodesHebdo }}
-        
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            </td>
-            <td>
-            {% if page.cursus %}
-            {% for semestre in page.cursus %}
-            {% if semestre == "S8" %}
-        
-            {{ page.periodesHebdo }}
-        
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            </td>
-        
-          </tr>
-          {% endif %}
-          {% if page.domaine == Realisation %}
-          <tr class="table-item">
-            <td>
-              Réalisation
-            </td>
-            <td>
-              {% if page.code %}
-              <a href="{{page.url | relative_url}}" class="no-link bold" data-link="{{page.url | relative_url}}">{{page.code}}</a>
-              {% endif %}
-            </td>
-            <td>
-              {% if page.title %}
-                {{page.title}}
-              {% endif %}
-            </td>
-            <td>
-            {% if page.cursus %}
-              {% for semestre in page.cursus %}
-                {% if semestre == "S1" %}
-                  
-                    {{ page.periodesHebdo }}
-                  
-                {% endif %}
-              {% endfor %}
-            {% endif %}
-            </td>
-            <td>
-            {% if page.cursus %}
-            {% for semestre in page.cursus %}
-            {% if semestre == "S2" %}
-        
-            {{ page.periodesHebdo }}
-        
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            </td>
-            <td>
-            {% if page.cursus %}
-            {% for semestre in page.cursus %}
-            {% if semestre == "S3" %}
-        
-            {{ page.periodesHebdo }}
-        
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            </td>
-            <td>
-            {% if page.cursus %}
-            {% for semestre in page.cursus %}
-            {% if semestre == "S4" %}
-        
-            {{ page.periodesHebdo }}
-        
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            </td>
-            <td>
-            {% if page.cursus %}
-            {% for semestre in page.cursus %}
-            {% if semestre == "S5" %}
-        
-            {{ page.periodesHebdo }}
-        
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            </td>
-            <td>
-            {% if page.cursus %}
-            {% for semestre in page.cursus %}
-            {% if semestre == "S6" %}
-        
-            {{ page.periodesHebdo }}
-        
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            </td>
-            <td>
-            {% if page.cursus %}
-            {% for semestre in page.cursus %}
-            {% if semestre == "S7" %}
-        
-            {{ page.periodesHebdo }}
-        
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            </td>
-            <td>
-            {% if page.cursus %}
-            {% for semestre in page.cursus %}
-            {% if semestre == "S8" %}
-        
-            {{ page.periodesHebdo }}
-        
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            </td>
-        
-          </tr>
-          {% endif %}
           {% endfor %}
-        </table>
-      </section>
-        
-      {% include footer.html %}
-    </main>
-    </body>
-  </body>
+        {% endfor %}
+
+        {%- comment -%} Totals row {%- endcomment -%}
+        <tr class="table-item">
+          <td><strong>TOTAL EP</strong></td>
+          <td></td>
+          <td></td>
+          {% for s in semestres %}
+            <td><strong>{{ periodes_map[s] }}</strong></td>
+          {% endfor %}
+        </tr>
+      </table>
+    </section>
+
+    {% include footer.html %}
+  </main>
+</body>
 </html>
