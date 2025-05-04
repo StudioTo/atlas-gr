@@ -1,25 +1,19 @@
-<tr class="{% 
-  if page.code %}code-{{ page.code }} {% endif %}{% 
-  if page.type %}type-{{ page.type }} {% endif %}{% 
-  if page.matiere %}matiere-{{ page.matiere }} {% endif 
-  %}table-item">
-  <td class="titre-cours">
-    {{ key }}
-  </td>
-  <td class="titre-cours">
-    {{ competence }}
-  </td>
+<tr class="{% if page.code %}code-{{ page.code }} {% endif %}{% if page.type %}type-{{ page.type }} {% endif %}{% if page.matiere %}matiere-{{ page.matiere }} {% endif %}table-item">
+  <td class="titre-cours">{{ key }}</td>
+  <td class="titre-cours">{{ competence }}</td>
 </tr>
-<tr class="periodes">
-  <ul>
-{% for unCours in cours offset:0 %}
-  {% for compArray in unCours.competences %}
-    {% for item in compArray %}
-      {% if item[0] == key %}
-          <li><a href="{{unCours.url | relative_url}}" class="no-link" data-link="{{unCours.url | relative_url}}">{{unCours.title}}</a></li>
-      {% endif %}
-   {% endfor %}
-  {% endfor %}
- {% endfor %}
+<tr class="table-item-cours">
+  <td colspan="2" class="periodes">
+    <ul>
+      {% for unCours in cours offset:0 %}
+        {% for compArray in unCours.competences %}
+          {% for item in compArray %}
+            {% if item[0] == key %}
+              <li><a href="{{unCours.url | relative_url}}" class="no-link" data-link="{{unCours.url | relative_url}}">{{unCours.title}}</a></li>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      {% endfor %}
     </ul>
+  </td>
 </tr>
