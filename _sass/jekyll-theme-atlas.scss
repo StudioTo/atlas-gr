@@ -109,7 +109,7 @@ a {
   }
 
   .meta-section {
-    margin-bottom: 0.5em;
+    // margin-bottom: 0.5em;
     // flex: 1;
     // -webkit-column-break-inside: avoid;
     // page-break-inside: avoid;
@@ -144,10 +144,9 @@ a {
 }
 
 .flex-box {
-  background: #ccc;
-  padding: 20px;
+  padding: 1em;
   box-sizing: border-box;
-  border: 1px solid #999;
+  border: none;
 }
 
 /* Width classes */
