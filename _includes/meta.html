@@ -20,11 +20,13 @@ Metadata pour un cours - sous forme de Front Matter
       Acronyme
     </h2>
     <ul>
-      {% if page.code %}
-        {% assign acronymSubpage = site.pages | where: 'title', 'Acronymes' %}
-        {% assign acronymArray = acronymSubpage[0].acronymes %}
-        {% include acronymes.html acronymArray=acronymArray %}
-      {% endif %}
+      <li>
+        {% if page.code %}
+          {% assign acronymSubpage = site.pages | where: 'title', 'Acronymes' %}
+          {% assign acronymArray = acronymSubpage[0].acronymes %}
+          {% include acronymes.html acronymArray=acronymArray %}
+        {% endif %}
+      </li>
     </ul>
   </section>
 
