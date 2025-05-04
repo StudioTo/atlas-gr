@@ -2,18 +2,31 @@
   <td class="titre-cours">{{ key }}</td>
   <td class="titre-cours">{{ competence }}</td>
 </tr>
-<tr class="table-item-cours">
-  <td colspan="2" class="periodes">
-    <ul>
-      {% for unCours in cours offset:0 %}
-        {% for compArray in unCours.competences %}
-          {% for item in compArray %}
-            {% if item[0] == key %}
-              <li><a href="{{unCours.url | relative_url}}" class="no-link" data-link="{{unCours.url | relative_url}}">{{unCours.title}}</a></li>
-            {% endif %}
+{% assign matching_courses = "" %}
+{% for unCours in cours offset:0 %}
+  {% for compArray in unCours.competences %}
+    {% for item in compArray %}
+      {% if item[0] == key %}
+        {% assign matching_courses = matching_courses | append: unCours.url | append: "," %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+{% endfor %}
+
+{% if matching_courses != "" %}
+  <tr class="table-item-cours">
+    <td colspan="2" class="periodes">
+      <ul>
+        {% for unCours in cours offset:0 %}
+          {% for compArray in unCours.competences %}
+            {% for item in compArray %}
+              {% if item[0] == key %}
+                <li><a href="{{unCours.url | relative_url}}" class="no-link" data-link="{{unCours.url | relative_url}}">{{unCours.title}}</a></li>
+              {% endif %}
+            {% endfor %}
           {% endfor %}
         {% endfor %}
-      {% endfor %}
-    </ul>
-  </td>
-</tr>
+      </ul>
+    </td>
+  </tr>
+{% endif %}
