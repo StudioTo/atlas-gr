@@ -300,6 +300,10 @@ table.decompte .decompte-footer {
   font-weight: bold;
 }
 
+table.decompte .active {
+  background-color: $grey;
+}
+
 /* Couleur des branches AP */
 
 .table-item {

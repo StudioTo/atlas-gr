@@ -43,18 +43,18 @@
                 <!-- {% comment %} Convert object to string for simpler checks {% endcomment %} -->
                 {% assign cursus_str = page.cursus | jsonify %}
                 <tr class="table-item">
-                  <td>{{ domaine }}</td>
-                  <td>
+                  <td class="active">{{ domaine }}</td>
+                  <td class="active">
                     {% if page.url %}
                       <a href="{{unCours.url | relative_url}}" class="no-link" data-link="{{unCours.url | relative_url}}">{{ page.code }}</a>
                     {% else %}
                       {{ page.code }}
                     {% endif %}
                   </td>
-                  <td>{{ page.title }}</td>
+                  <td class="active">{{ page.title }}</td>
 
                   {% for s in semestres %}
-                    <td>
+                    <td class="{% if cursus_str contains s and hebdo > 0 %}active{% endif %}">
                       {% if cursus_str contains s %}
                         {% assign hebdo = page.periodesHebdo | plus: 0 %}
                         {{ hebdo }}
