@@ -28,6 +28,17 @@ Metadata pour un cours - sous forme de Front Matter
     </ul>
   </section>
 
+  {% if page.domaine %}
+    <section class="meta-section profs-visible flex-box box-100">
+      <h2>Domaine</h2>
+      <ul>
+        {% for item in page.domaine %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
   {% if page.cursus %}
   <section class="meta-section flex-box box-25">
     <h2>{{ timeunit }}</h2>
@@ -100,17 +111,6 @@ Metadata pour un cours - sous forme de Front Matter
         </ul>
       </section>
     {% endif %}
-  {% endif %}
-
-  {% if page.profs %}
-  <section class="meta-section profs-visible flex-box box-100">
-    <h2>Domaine</h2>
-    <ul>
-      {% for item in page.domaine %}
-        <li>{{ item }}</li>
-      {% endfor %}
-    </ul>
-  </section>
   {% endif %}
 
   {% if page.competences %}
