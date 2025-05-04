@@ -6,7 +6,13 @@
     {% for key_value in item %}
       {% assign key = key_value[0] %}
       {% assign periods = key_value[1] %}
-      {% assign definition = include.compArray[key] %}
+      {% for domaine in site.data.comp %}
+        {% for subkey in domaine.items %}
+          {% if subkey[0] == key %}
+            {% assign definition = subkey[1] %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
 
       <tr>
         <td data-comp="{{ key }}" class="data-nbr">{{ key }}</td>
