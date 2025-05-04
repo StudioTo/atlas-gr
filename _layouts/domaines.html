@@ -12,9 +12,11 @@
     </header>
 
     <main class="main-content" id="content" role="main">
+
+      {{ content }}
       
       {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
-      {% assign comps = compSubpage[0].comp %}  {# now called `comps` #}
+      {% assign comps = compSubpage[0].comp %}
       
       {% assign cours = site.pages | where: "layout", "cours" %}
       
@@ -27,8 +29,6 @@
           {% endfor %}
         </table>
       {% endfor %}
-      
-      {{ content }}
 
       {% include footer.html %}
     </main>
