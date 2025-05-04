@@ -14,25 +14,22 @@
     <main class="main-content" id="content" role="main">
       
       {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
-      {% assign compArray = compSubpage[0].comp %}
-
+      {% assign comps = compSubpage[0].comp %}  {# now called `comps` #}
+      
       {% assign cours = site.pages | where: "layout", "cours" %}
-
-
-        {% for compArray in comps %}
-
-        <h2>{{ compArray[0].title }}</h2>
-
+      
+      {% for domaine in comps %}
+        <h2>{{ domaine.domaine }}</h2>
+      
         <table class="objectifs competences">
-          {% for competence in compArray %}
+          {% for competence in domaine.items %}
             {% include table-item-comp.html competence=competence cours=cours %}
           {% endfor %}
         </table>
+      {% endfor %}
+      
+      {{ content }}
 
-        {% endfor %}
-
-        {{ content }}
-        
       {% include footer.html %}
     </main>
   </body>

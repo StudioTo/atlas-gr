@@ -15,20 +15,23 @@ Metadata pour un cours - sous forme de Front Matter
 
   {% if (page.periodesHebdo and page.periodesHebdo != 0) or (page.periodes and page.periodes != 0) %}
 
+  {% if page.code %}
   <section class="meta-section profs-visible flex-box box-25">
     <h2>
       Acronyme
     </h2>
     <ul>
-      <li>
-        {% if page.code %}
-          {% assign acronymSubpage = site.pages | where: 'title', 'Acronymes' %}
-          {% assign acronymArray = acronymSubpage[0].acronymes %}
-          {% include acronymes.html acronymArray=acronymArray %}
-        {% endif %}
-      </li>
+      {% for item in page.code %}
+        <li>{{ item }}</li>
+      {% endfor %}
+      <!-- {% if page.code %}
+        {% assign acronymSubpage = site.pages | where: 'title', 'Acronymes' %}
+        {% assign acronymArray = acronymSubpage[0].acronymes %}
+        {% include acronymes.html acronymArray=acronymArray %}
+      {% endif %} -->
     </ul>
   </section>
+  {% endif %}
 
   {% if page.domaine %}
     <section class="meta-section profs-visible flex-box box-25">
