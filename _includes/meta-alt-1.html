@@ -1,0 +1,138 @@
+{% comment %}
+
+Metadata pour un cours - sous forme de Front Matter
+
+{% endcomment %}
+{% assign timeunit = "Calendrier" %}
+{% if page.timeunit %}
+{% assign timeunit = page.timeunit %}
+{% endif %}
+<footer class="{% 
+  if page.code %}code-{{ page.code }} {% endif %}{% 
+  if page.type %}type-{{ page.type }} {% endif %}{% 
+  if page.matiere %}matiere-{{ page.matiere }} {% endif 
+  %}cours-meta flex-container">
+
+  {% if (page.periodesHebdo and page.periodesHebdo != 0) or (page.periodes and page.periodes != 0) %}
+
+  {% if page.code %}
+  <section class="meta-section profs-visible flex-box box-25">
+    <h2>
+      Acronyme
+    </h2>
+    <ul>
+      {% for item in page.code %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if page.domaine %}
+    <section class="meta-section profs-visible flex-box box-25">
+      <h2>Domaine</h2>
+      <ul>
+        {% for item in page.domaine %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+  {% if page.cursus %}
+  <section class="meta-section flex-box box-25">
+    <h2>{{ timeunit }}</h2>
+    <ul>
+      {% for item in page.cursus %}
+        {% for key in item %}
+          <li>
+            {{ key.first }}:
+            {{ key.last }}
+          </li>
+        {% endfor %}
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  <section class="meta-section profs-visible flex-box box-25">
+    <h2>
+      Périodes
+    </h2>
+    <ul>
+      {% if page.periodes and page.periodes != 0 %}
+        <li>{{ page.periodes }} / semestre</li>
+      {% endif %}
+      {% if page.periodesHebdo and page.periodesHebdo != 0 %}
+        <li>{{ page.periodesHebdo }} / semaine</li>
+      {% endif %}
+    </ul>
+  </section>
+  {% else %}
+    {% if page.competences %}
+      <section class="meta-section">
+        {% assign c_periodes = 0 %}
+        {% for item in page.competences %}
+          {% for key in item %}
+            {% assign c_periodes = c_periodes | plus: key.last %}
+          {% endfor %}
+        {% endfor %}
+        {{ c_periodes }} périodes<br />
+      </section>
+    {% endif %}
+  {% endif %}
+
+  {% if page.validation %}
+    {% if page.validation != 0 %}
+      <section class="meta-section profs-visible flex-box box-50">
+        <h2>Validation</h2>
+        <ul>
+          {% if page.validation and page.validation != 0 %}
+            <li>{{ page.validation }} note(s) / semestre</li>
+          {% endif %}
+        </ul>
+      </section>
+    {% endif %}
+  {% endif %}
+
+  {% if page.criteres %}
+    {% if page.criteres != 0 %}
+      <section class="meta-section profs-visible flex-box box-50">
+        <h2>Critères d’évaluation</h2>
+        <ul>
+          {% for item in page.criteres %}
+            {% for key in item %}
+              <li>
+                {{ key.first }}:
+                {{ key.last }} pts
+              </li>
+            {% endfor %}
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+  {% endif %}
+
+  {% if page.competences %}
+  <section class="meta-section meta-competences profs-visible flex-box box-100">
+    <h2>Compétences</h2>
+
+    {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
+    {% assign compArray = compSubpage[0].comp %}
+
+    {% include meta-competences-alt-1.html compArray=compArray %}
+  </section>
+  {% endif %}
+
+  {% if page.profs %}
+    <section class="profs meta-section flex-box box-25">
+      <h2>Enseignant.e.s</h2>
+      <ul>
+        {% for item in page.profs %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+</footer>

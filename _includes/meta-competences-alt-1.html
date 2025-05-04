@@ -1,0 +1,20 @@
+{% assign periodesCours = 0 %}
+
+{% if page.competences %}
+<table class="competences">
+  {% for item in page.competences %}
+    {% for key_value in item %}
+      {% assign key = key_value[0] %}
+      {% assign periods = key_value[1] %}
+      {% assign definition = include.compArray[key] %}
+
+      <tr>
+        <td data-comp="{{ key }}" class="data-nbr">{{ key }}</td>
+        <td>{{ definition }} ({{ periods }}p.)</td>
+      </tr>
+
+      {% assign periodesCours = periodesCours | plus: periods %}
+    {% endfor %}
+  {% endfor %}
+</table>
+{% endif %}
