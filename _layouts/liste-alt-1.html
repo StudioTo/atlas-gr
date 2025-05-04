@@ -24,9 +24,9 @@
 
     {% if page contains "type" %}
     {% assign type = page.type %}
-    {% assign cours = site.pages | where: "layout", "cours" | where: "type", type | sort: ordre %}
+    {% assign cours = site.pages | where: "layout", "cours-alt-1" | where: "type", type | sort: ordre %}
     {% else %}
-    {% assign cours = site.pages | where: "layout", "cours" | sort: ordre %}
+    {% assign cours = site.pages | where: "layout", "cours-alt-1" | sort: ordre %}
     {% endif %}
 
 
