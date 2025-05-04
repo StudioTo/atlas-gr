@@ -15,8 +15,8 @@
 
 {% if matching_courses != "" %}
   <tr class="table-item-cours">
-    <td colspan="2" class="periodes cours-list">
-      <ul>
+    <td colspan="2" class="periodes">
+      <ul class="cours-list">
         {% for unCours in cours offset:0 %}
           {% for compArray in unCours.competences %}
             {% for item in compArray %}
