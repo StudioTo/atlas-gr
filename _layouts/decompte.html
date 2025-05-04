@@ -1,88 +1,92 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-<head>
-  {% include header.html %}
-</head>
-<body class="global">
+<html lang="{{ site.lang | default: 'en-US' }}">
+  <head>
+    {% include header.html %}
+  </head>
+  <body class="global">
+    <header class="page-header" role="banner">
+      <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
+      <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
+      {% include nav.html %}
+    </header>
 
-  <header class="page-header" role="banner">
-    <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
-    <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
-    {% include nav.html %}
-  </header>
+    <main class="main-content global" id="content" role="main">
+      {{ content }}
 
-  <main class="main-content global" id="content" role="main">
-    {{ content }}
+      <section class="section-cursus">
+        {% assign cours = site.pages | where: "layout", "cours-alt-1" %}
+        {% assign semestres = "S1,S2,S3,S4,S5,S6,S7,S8" | split: "," %}
+        {% assign domaines = "Gestion,Conception,Réalisation" | split: "," %}
 
-    <section class="section-cursus">
-      {% assign cours = site.pages | where: "layout", "cours-alt-1" %}
-      {% assign domaines = "Gestion,Conception,Réalisation" | split: "," %}
-      {% assign semestres = "S1,S2,S3,S4,S5,S6,S7,S8" | split: "," %}
-
-      {%- comment -%} Initialize EP period totals {%- endcomment -%}
-      {% assign periodes_EP_map = "" %}
-      {% for s in semestres %}
-        {% assign periodes_EP_map = periodes_EP_map | append: s | append: ":0," %}
-      {% endfor %}
-      {% assign periodes_EP_map = periodes_EP_map | split: "," %}
-      {% assign periodes_map = {} %}
-      {% for pair in periodes_EP_map %}
-        {% assign kv = pair | split: ":" %}
-        {% assign dummy = periodes_map[kv[0]] = kv[1] %}
-      {% endfor %}
-
-      <table class="cursus">
-        <tr class="table-item">
-          <th>Domaine</th>
-          <th>Code</th>
-          <th>Titre</th>
-          {% for s in semestres %}
-            <th>{{ s }}</th>
-          {% endfor %}
-        </tr>
-
-        {% for domaine in domaines %}
-          {% assign cours_domaine = cours | where: "domaine", domaine %}
-          {% for page in cours_domaine %}
-            <tr class="table-item">
-              <td>{{ domaine }}</td>
-              <td>
-                {% if page.code %}
-                  <a href="{{ page.url | relative_url }}" class="no-link bold">{{ page.code }}</a>
-                {% endif %}
-              </td>
-              <td>{{ page.title }}</td>
-
-              {% for s in semestres %}
-                <td>
-                  {% assign displayed = false %}
-                  {% if page.cursus contains s %}
-                    {{ page.periodesHebdo }}
-                    {% assign displayed = true %}
-                    {% if page.type == "30-EP" %}
-                      {% assign current = periodes_map[s] | plus: page.periodesHebdo %}
-                      {% assign dummy = periodes_map[s] = current %}
-                    {% endif %}
-                  {% endif %}
-                </td>
-              {% endfor %}
-            </tr>
-          {% endfor %}
+        {% comment %} Initialize EP totals per semester {% endcomment %}
+        {% assign periodes_map = {} %}
+        {% for s in semestres %}
+          {% assign dummy = periodes_map[s] = 0 %}
         {% endfor %}
 
-        {%- comment -%} Totals row {%- endcomment -%}
-        <tr class="table-item">
-          <td><strong>TOTAL EP</strong></td>
-          <td></td>
-          <td></td>
-          {% for s in semestres %}
-            <td><strong>{{ periodes_map[s] }}</strong></td>
-          {% endfor %}
-        </tr>
-      </table>
-    </section>
+        <table class="cursus">
+          <tr class="table-item">
+            <td>Domaine</td>
+            <td>Code</td>
+            <td>Titre</td>
+            {% for s in semestres %}
+              <td>{{ s }}</td>
+            {% endfor %}
+          </tr>
 
-    {% include footer.html %}
-  </main>
-</body>
+          {% for domaine in domaines %}
+            {% for page in cours %}
+              {% if page.domaine contains domaine %}
+                <tr class="table-item">
+                  <td>{{ domaine }}</td>
+                  <td>
+                    {% if page.code %}
+                      <a href="{{ page.url | relative_url }}" class="no-link bold">{{ page.code }}</a>
+                    {% endif %}
+                  </td>
+                  <td>{{ page.title }}</td>
+
+                  {% for s in semestres %}
+                    <td>
+                      {% assign in_semestre = false %}
+                      {% if page.cursus %}
+                        {% for item in page.cursus %}
+                          {% assign keys = item | keys %}
+                          {% assign key = keys[0] %}
+                          {% assign value = item[key] %}
+                          {% if value == s %}
+                            {% assign in_semestre = true %}
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
+
+                      {% if in_semestre %}
+                        {{ page.periodesHebdo | default: 0 }}
+                        {% if page.type == "30-EP" %}
+                          {% assign current = periodes_map[s] | default: 0 %}
+                          {% assign current = current | plus: page.periodesHebdo %}
+                          {% assign dummy = periodes_map[s] = current %}
+                        {% endif %}
+                      {% endif %}
+                    </td>
+                  {% endfor %}
+                </tr>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+
+          <tr class="table-item">
+            <td><strong>TOTAL EP</strong></td>
+            <td></td>
+            <td></td>
+            {% for s in semestres %}
+              <td><strong>{{ periodes_map[s] }}</strong></td>
+            {% endfor %}
+          </tr>
+        </table>
+      </section>
+
+      {% include footer.html %}
+    </main>
+  </body>
 </html>
