@@ -14,8 +14,7 @@
       {{ content }}
 
       <section class="section-cursus">
-        {% assign cursus = page.cursus %}
-        {% assign selected_cursus = page.cursus %}
+        {% assign filterCursus = page.cursus %}
         {% assign cours = site.pages | where: "layout", "cours-alt-1" %}
         {% assign semestres = "S1,S2,S3,S4,S5,S6,S7,S8" | split: "," %}
         {% assign domaines = "Gestion,Conception,Réalisation" | split: "," %}
@@ -42,16 +41,14 @@
           {% for domaine in domaines %}
             {% assign first_row = true %}
             {% for page in cours %}
-              {% if page.domaine contains domaine and page.cursus %}
-                {% assign match = false %}
+              {% if page.domaine contains domaine %}
+                {% assign selected_semestre = "" %}
                 {% for item in page.cursus %}
                   {% assign pair_str = item | jsonify %}
-                  {% if pair_str contains selected_cursus %}
-                    {% assign match = true %}
+                  {% if pair_str contains filterCursus %}
+                    {% assign selected_semestre = item[filterCursus] %}
                   {% endif %}
                 {% endfor %}
-                {% if match %}
-                {% assign cursus_str = page.cursus | jsonify %}
                 <tr class="table-item{% if first_row %} first-in-domain{% endif %}">
                   <td class="head">{{ domaine }}</td>
                   <td class="">
@@ -65,8 +62,8 @@
 
                   {% assign hebdo = page.periodesHebdo | plus: 0 %}
                   {% for s in semestres %}
-                    <td class="{% if cursus_str contains s and hebdo > 0 %}active{% endif %}">
-                      {% if cursus_str contains s %}
+                    <td class="{% if s == selected_semestre and hebdo > 0 %}active{% endif %}">
+                      {% if s == selected_semestre %}
                         {{ hebdo }}
                         {% if page.type == "30-EP" %}
                           {% case s %}
@@ -85,7 +82,6 @@
                   {% endfor %}
                 </tr>
                 {% assign first_row = false %}
-                {% endif %}
               {% endif %}
             {% endfor %}
           {% endfor %}
