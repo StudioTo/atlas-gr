@@ -17,15 +17,14 @@
       
       {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
       {% assign comps = compSubpage[0].comp %}
-      
       {% assign cours = site.pages | where: "layout", "cours" %}
       
       {% for domaine in comps %}
         <h2>{{ domaine.domaine }}</h2>
-      
         <table class="objectifs competences">
-          {% for competence in domaine.items %}
-            {% include table-item-comp.html competence=competence cours=cours %}
+          {% for key in domaine.items %}
+            {% assign competence = domaine.items[key] %}
+            {% include table-item-comp.html competence=competence cours=cours key=key %}
           {% endfor %}
         </table>
       {% endfor %}
