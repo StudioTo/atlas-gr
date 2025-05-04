@@ -20,7 +20,13 @@
         {% assign ordre = "title" %}
       {% endif %}
 
+      {% if page contains "type" %}
+      {% assign type = page.type %}
+      {% assign cours = site.pages | where: "layout", "cours-alt-1" | where: "type", type | sort: ordre %}
+      {% else %}
       {% assign cours = site.pages | where: "layout", "cours-alt-1" | sort: ordre %}
+      {% endif %}
+      
       {% comment %} Liste de tous les cours {% endcomment %}
 
       {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
