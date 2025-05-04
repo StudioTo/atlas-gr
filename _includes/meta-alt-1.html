@@ -117,8 +117,8 @@ Metadata pour un cours - sous forme de Front Matter
   <section class="meta-section meta-competences profs-visible flex-box box-100">
     <h2>Objectifs</h2>
 
-    {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
-    {% assign compArray = compSubpage[0].comp %}
+    <!-- {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
+    {% assign compArray = compSubpage[0].comp %} -->
 
     {% include meta-competences-alt-1.html compArray=compArray %}
   </section>

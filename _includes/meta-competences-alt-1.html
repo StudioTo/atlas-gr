@@ -1,4 +1,6 @@
 {% assign periodesCours = 0 %}
+{% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
+{% assign compArray = compSubpage[0].comp %}
 
 {% if page.competences %}
 <table class="competences">
@@ -6,7 +8,7 @@
     {% for key_value in item %}
       {% assign key = key_value[0] %}
       {% assign periods = key_value[1] %}
-      {% for domaine in site.data.comp %}
+      {% for domaine in compArray %}
         {% for subkey in domaine.items %}
           {% if subkey[0] == key %}
             {% assign definition = subkey[1] %}
