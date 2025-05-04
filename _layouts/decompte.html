@@ -38,11 +38,11 @@
           </tr>
 
           {% for domaine in domaines %}
+            {% assign first_row = true %}
             {% for page in cours %}
               {% if page.domaine contains domaine %}
-                <!-- {% comment %} Convert object to string for simpler checks {% endcomment %} -->
                 {% assign cursus_str = page.cursus | jsonify %}
-                <tr class="table-item">
+                <tr class="table-item{% if first_row %} first-in-domain{% endif %}">
                   <td class="head">{{ domaine }}</td>
                   <td class="">
                     {% if page.url %}
@@ -53,10 +53,10 @@
                   </td>
                   <td class="">{{ page.title }}</td>
 
+                  {% assign hebdo = page.periodesHebdo | plus: 0 %}
                   {% for s in semestres %}
                     <td class="{% if cursus_str contains s and hebdo > 0 %}active{% endif %}">
                       {% if cursus_str contains s %}
-                        {% assign hebdo = page.periodesHebdo | plus: 0 %}
                         {{ hebdo }}
                         {% if page.type == "30-EP" %}
                           {% case s %}
@@ -74,6 +74,7 @@
                     </td>
                   {% endfor %}
                 </tr>
+                {% assign first_row = false %}
               {% endif %}
             {% endfor %}
           {% endfor %}
