@@ -20,13 +20,15 @@
       {% assign cours = site.pages | where: "layout", "cours" %}
       
       {% for domaine in comps %}
-        <h2>Domaine: {{ domaine.domaine }}</h2>
+        <h1>Domaine: {{ domaine.domaine }}</h1>
         <table class="objectifs competences">
-          {% for key_value in domaine.items %}
+
+          {% for item in domaine.items %}
             {% assign key = key_value[0] %}
             {% assign competence = key_value[1] %}
-            {% include table-item-comp.html competence=competence cours=cours key=key %}
+            {% include table-item-comp.html competence=item cours=cours %}
           {% endfor %}
+
         </table>
       {% endfor %}
 
