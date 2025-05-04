@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: 'en-US' }}">
+<html lang="{{ site.lang | default: 'fr' }}">
   <head>
     {% include header.html %}
   </head>
@@ -18,9 +18,6 @@
         {% assign semestres = "S1,S2,S3,S4,S5,S6,S7,S8" | split: "," %}
         {% assign domaines = "Gestion,Conception,Réalisation" | split: "," %}
 
-        {%- comment -%}
-        Initialize total period counters per semester
-        {%- endcomment -%}
         {% assign total_S1 = 0 %}
         {% assign total_S2 = 0 %}
         {% assign total_S3 = 0 %}
@@ -46,8 +43,10 @@
                 <tr class="table-item">
                   <td>{{ domaine }}</td>
                   <td>
-                    {% if page.code %}
+                    {% if page.url %}
                       <a href="{{ page.url | relative_url }}" class="no-link bold">{{ page.code }}</a>
+                    {% else %}
+                      {{ page.code }}
                     {% endif %}
                   </td>
                   <td>{{ page.title }}</td>
@@ -69,13 +68,18 @@
                       {% if in_semestre %}
                         {% assign hebdo = page.periodesHebdo | default: 0 %}
                         {{ hebdo }}
-
+                        
                         {% if page.type == "30-EP" %}
-                          {% assign varname = "total_" | append: s %}
-                          {% assign current = nil %}
-                          {% capture current %}{{ [varname] | first }}{% endcapture %}
-                          {% assign newtotal = current | plus: hebdo %}
-                          {% capture unused %}{% assign [varname] = newtotal %}{% endcapture %}
+                          {% case s %}
+                            {% when "S1" %}{% assign total_S1 = total_S1 | plus: hebdo %}
+                            {% when "S2" %}{% assign total_S2 = total_S2 | plus: hebdo %}
+                            {% when "S3" %}{% assign total_S3 = total_S3 | plus: hebdo %}
+                            {% when "S4" %}{% assign total_S4 = total_S4 | plus: hebdo %}
+                            {% when "S5" %}{% assign total_S5 = total_S5 | plus: hebdo %}
+                            {% when "S6" %}{% assign total_S6 = total_S6 | plus: hebdo %}
+                            {% when "S7" %}{% assign total_S7 = total_S7 | plus: hebdo %}
+                            {% when "S8" %}{% assign total_S8 = total_S8 | plus: hebdo %}
+                          {% endcase %}
                         {% endif %}
                       {% endif %}
                     </td>
