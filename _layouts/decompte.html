@@ -40,7 +40,8 @@
           {% for domaine in domaines %}
             {% for page in cours %}
               {% if page.domaine contains domaine %}
-                {% assign cursus_str = page.cursus | jsonify %}  {# Convert object to string for simpler checks #}
+                {% comment %} Convert object to string for simpler checks {% endcomment %}
+                {% assign cursus_str = page.cursus | jsonify %}
                 <tr class="table-item">
                   <td>{{ domaine }}</td>
                   <td>
