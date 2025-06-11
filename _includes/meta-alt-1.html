@@ -82,7 +82,7 @@ Metadata pour un cours - sous forme de Front Matter
     {% endif %}
   {% endif %}
 
-  {% if page.validation %}
+  <!-- {% if page.validation %}
     {% if page.validation != 0 %}
       <section class="meta-section profs-visible flex-box box-50">
         <h2>Validation</h2>
@@ -111,10 +111,10 @@ Metadata pour un cours - sous forme de Front Matter
         </ul>
       </section>
     {% endif %}
-  {% endif %}
+  {% endif %} -->
 
   {% if page.competences %}
-  <section class="meta-section meta-competences profs-visible flex-box box-100">
+  <section class="profs meta-section meta-competences profs-visible flex-box box-100">
     <h2>Objectifs</h2>
 
     <!-- {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
