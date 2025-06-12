@@ -154,11 +154,15 @@ a {
     border-top: 2px solid $black;
   }
 
+	.related-courses ul {
+		margin: 0
+	}
+
   .competence-row:hover {
     background-color: #f0f0f0;
     cursor: pointer;
   }
-	
+
   .hidden {
     display: none;
   }
