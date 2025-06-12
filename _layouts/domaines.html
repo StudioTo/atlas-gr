@@ -27,7 +27,7 @@
             {% for item in competence_obj.items %}
               {% assign label = item[0] %}
               {% assign description = item[1] %}
-              <tr>
+              <tr class="competence-row" data-toggle-target="related-{{ label | slugify }}">
                 <td>{{ label }}</td>
                 <td>{{ description }}</td>
               </tr>
@@ -40,7 +40,7 @@
                 {% endfor %}
               {% endfor %}
               {% if related_courses != "" %}
-                <tr>
+                <tr class="related-courses hidden" id="related-{{ label | slugify }}">
                   <td></td>
                   <td>
                     <ul>
@@ -54,6 +54,28 @@
         {% endfor %}
       {% endfor %}
 
+      <style>
+        .competence-row:hover {
+          background-color: #f0f0f0;
+          cursor: pointer;
+        }
+        .hidden {
+          display: none;
+        }
+      </style>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          document.querySelectorAll(".competence-row").forEach(function(row) {
+            row.addEventListener("click", function() {
+              const targetId = row.getAttribute("data-toggle-target");
+              const target = document.getElementById(targetId);
+              if (target) {
+                target.classList.toggle("hidden");
+              }
+            });
+          });
+        });
+      </script>
       {% include footer.html %}
     </main>
   </body>
