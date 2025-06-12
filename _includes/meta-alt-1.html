@@ -113,30 +113,26 @@ Metadata pour un cours - sous forme de Front Matter
     {% endif %}
   {% endif %} -->
 
-    {% if page.competences %}
-      <section class="meta-section meta-competences flex-box box-100">
-        <h2>Objectifs</h2>
+  {% if page.competences %}
+    <section class="meta-section meta-competences flex-box box-100">
+      <h2>Objectifs</h2>
 
-        <!-- {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
-        {% assign compArray = compSubpage[0].comp %} -->
+      <!-- {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
+      {% assign compArray = compSubpage[0].comp %} -->
 
-        {% include meta-competences-alt-1.html compArray=compArray %}
-      </section>
-    {% endif %}
+      {% include meta-competences-alt-1.html compArray=compArray %}
+    </section>
+  {% endif %}
 
-  {% if site.access_admin == user.role %}
-
-    {% if page.profs %}
-      <section class="profs meta-section flex-box box-100">
-        <h2>Enseignant.e.s</h2>
-        <ul>
-          {% for item in page.profs %}
-            <li>{{ item }}</li>
-          {% endfor %}
-        </ul>
-      </section>
-    {% endif %}
-    
+  {% if page.profs %}
+    <section class="profs meta-section flex-box box-100">
+      <h2>Enseignant.e.s</h2>
+      <ul>
+        {% for item in page.profs %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </section>
   {% endif %}
 
 </footer>
