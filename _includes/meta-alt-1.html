@@ -107,7 +107,7 @@ Metadata pour un cours - sous forme de Front Matter
         {% for titre in page.cours-lies %}
           {% assign related = site.pages | where: "title", titre | first %}
           {% if related %}
-            <li><a href="{{ related.url | relative_url }}">{{ related.title }}</a></li>
+            <li><a href="/formation-gr{{ related.url }}">{{ related.title }}</a></li>
           {% else %}
             <li>{{ titre }}</li>
           {% endif %}
