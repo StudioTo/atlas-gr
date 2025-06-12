@@ -113,7 +113,7 @@ Metadata pour un cours - sous forme de Front Matter
 
   {% if page.cours-lies %}
     <section class="meta-section meta-cours-lies profs-visible flex-box box-100">
-      <h2>Cours Liés</h2>
+      <h2>Cours associés</h2>
       <ul>
         {% for titre in page.cours-lies %}
           {% assign related = site.pages | where: "title", titre | first %}
@@ -126,7 +126,7 @@ Metadata pour un cours - sous forme de Front Matter
       </ul>
     </section>
   {% endif %}
-  
+
   {% if page.validation %}
     {% if page.validation != 0 %}
       <section class="meta-section meta-validation profs-visible flex-box box-100">

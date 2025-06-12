@@ -33,12 +33,10 @@
               </tr>
               {% assign related_courses = "" %}
               {% for unCours in cours %}
-                {% for domaine_comp in unCours.comp %}
-                  {% for competence in domaine_comp.items %}
-                    {% if competence.items[label] %}
-                      {% assign related_courses = related_courses | append: '<li><a href="' | append: unCours.url | append: '">' | append: unCours.title | append: '</a></li>' %}
-                    {% endif %}
-                  {% endfor %}
+                {% for comp in unCours.competences %}
+                  {% if comp[label] %}
+                    {% assign related_courses = related_courses | append: '<li><a href="' | append: unCours.url | append: '">' | append: unCours.title | append: '</a></li>' %}
+                  {% endif %}
                 {% endfor %}
               {% endfor %}
               {% if related_courses != "" %}
