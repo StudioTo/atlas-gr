@@ -27,7 +27,11 @@
             {% for key in competence_obj.items %}
               {% assign label = key[0] %}
               {% assign description = key[1] %}
-              {% include table-item-comp-alt-1.html competence=description cours=cours key=label %}
+              <tr>
+                <td>{{ label }}</td>
+                <td>{{ description }}</td>
+                <td>{{ label }}</td>
+              </tr>
             {% endfor %}
           </table>
         {% endfor %}
