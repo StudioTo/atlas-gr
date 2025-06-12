@@ -8,11 +8,14 @@
     {% for key_value in item %}
       {% assign key = key_value[0] %}
       {% assign periods = key_value[1] %}
+      {% assign definition = "" %}
       {% for domaine in compArray %}
-        {% for subkey in domaine.items %}
-          {% if subkey[0] == key %}
-            {% assign definition = subkey[1] %}
-          {% endif %}
+        {% for competence_obj in domaine.items %}
+          {% for subkey in competence_obj.items %}
+            {% if subkey[0] == key %}
+              {% assign definition = subkey[1] %}
+            {% endif %}
+          {% endfor %}
         {% endfor %}
       {% endfor %}
 
