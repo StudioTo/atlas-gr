@@ -4,11 +4,13 @@
 </tr>
 {% assign matching_courses = "" %}
 {% for unCours in cours offset:0 %}
-  {% for compArray in unCours.competences %}
-    {% for item in compArray %}
-      {% if item[0] == key %}
-        {% assign matching_courses = matching_courses | append: unCours.url | append: "," %}
-      {% endif %}
+  {% for domaine in unCours.comp %}
+    {% for competence in domaine.items %}
+      {% for competenceKey in competence.items %}
+        {% if competenceKey == key %}
+          {% assign matching_courses = matching_courses | append: unCours.url | append: "," %}
+        {% endif %}
+      {% endfor %}
     {% endfor %}
   {% endfor %}
 {% endfor %}
@@ -18,11 +20,13 @@
     <td colspan="2" class="periodes">
       <ul class="cours-list">
         {% for unCours in cours offset:0 %}
-          {% for compArray in unCours.competences %}
-            {% for item in compArray %}
-              {% if item[0] == key %}
-                <li><a href="{{unCours.url | relative_url}}" class="no-link" data-link="{{unCours.url | relative_url}}">{{unCours.code}} {{unCours.title}}</a></li>
-              {% endif %}
+          {% for domaine in unCours.comp %}
+            {% for competence in domaine.items %}
+              {% for competenceKey in competence.items %}
+                {% if competenceKey == key %}
+                  <li><a href="{{unCours.url | relative_url}}" class="no-link" data-link="{{unCours.url | relative_url}}">{{unCours.code}} {{unCours.title}}</a></li>
+                {% endif %}
+              {% endfor %}
             {% endfor %}
           {% endfor %}
         {% endfor %}
