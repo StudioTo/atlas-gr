@@ -12,8 +12,8 @@
       {% for domaine in compArray %}
         {% for competence_obj in domaine.items %}
           {% for subkey in competence_obj.items %}
-            {% if subkey[0] == key %}
-              {% assign definition = subkey[1] %}
+            {% if subkey == key %}
+              {% assign definition = competence_obj.items[subkey] %}
             {% endif %}
           {% endfor %}
         {% endfor %}
