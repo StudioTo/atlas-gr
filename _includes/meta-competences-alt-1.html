@@ -8,17 +8,19 @@
     {% for key_value in item %}
       {% assign key = key_value[0] %}
       {% assign periods = key_value[1] %}
+      {% assign codeNbr = "" %}
       {% assign definition = "" %}
       {% for domaine in compArray %}
         {% for competence_obj in domaine.items %}
           {% if competence_obj.items[key] %}
+            {% assign codeNbr = competence_obj.items[key].code %}
             {% assign definition = competence_obj.items[key].description %}
           {% endif %}
         {% endfor %}
       {% endfor %}
 
       <tr>
-        <td data-comp="{{ key }}" class="data-nbr">{{ competence_obj.items[key].code }}</td>
+        <td data-comp="{{ key }}" class="data-nbr">{{ codeNbr }}</td>
         <td>{{ definition }}</td>
         <!-- <td>({{ periods }}p.)</td> -->
       </tr>
