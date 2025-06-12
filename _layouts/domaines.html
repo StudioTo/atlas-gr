@@ -27,10 +27,6 @@
             {% for item in competence_obj.items %}
               {% assign key = item[0] %}
               {% assign data = item[1] %}
-              <tr class="competence-row" data-toggle-target="related-{{ data.code | slugify }}">
-                <td>{{ data.code }}</td>
-                <td>{{ data.description }}</td>
-              </tr>
               {% assign related_courses = "" %}
               {% for unCours in cours %}
                 {% for comp in unCours.competences %}
@@ -39,6 +35,15 @@
                   {% endif %}
                 {% endfor %}
               {% endfor %}
+              <tr
+                {% if related_courses != "" %}
+                  class="competence-row"
+                  data-toggle-target="related-{{ data.code | slugify }}"
+                {% endif %}
+              >
+                <td>{{ data.code }}</td>
+                <td>{{ data.description }}</td>
+              </tr>
               {% if related_courses != "" %}
                 <tr class="related-courses hidden" id="related-{{ data.code | slugify }}">
                   <td></td>
