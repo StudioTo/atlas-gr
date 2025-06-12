@@ -35,7 +35,7 @@
               {% for unCours in cours %}
                 {% for comp in unCours.competences %}
                   {% if comp[label] %}
-                    {% assign related_courses = related_courses | append: '<li><a href="' | append: unCours.url | append: '">' | append: unCours.title | append: '</a></li>' %}
+                    {% assign related_courses = related_courses | append: '<li><a href="/formation-gr' | append: unCours.url | append: '">' | append: unCours.title | append: '</a></li>' %}
                   {% endif %}
                 {% endfor %}
               {% endfor %}
