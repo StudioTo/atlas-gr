@@ -113,18 +113,18 @@ Metadata pour un cours - sous forme de Front Matter
     {% endif %}
   {% endif %} -->
 
-  {% if site.access_admin == user.role %}
-
     {% if page.competences %}
-    <section class="meta-section meta-competences flex-box box-100">
-      <h2>Objectifs</h2>
+      <section class="meta-section meta-competences flex-box box-100">
+        <h2>Objectifs</h2>
 
-      <!-- {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
-      {% assign compArray = compSubpage[0].comp %} -->
+        <!-- {% assign compSubpage = site.pages | where: 'title', 'Objectifs' %}
+        {% assign compArray = compSubpage[0].comp %} -->
 
-      {% include meta-competences-alt-1.html compArray=compArray %}
-    </section>
+        {% include meta-competences-alt-1.html compArray=compArray %}
+      </section>
     {% endif %}
+
+  {% if site.access_admin == user.role %}
 
     {% if page.profs %}
       <section class="profs meta-section flex-box box-100">
