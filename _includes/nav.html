@@ -17,8 +17,10 @@
 
 <ul class="page-nav">
   {% for node in navAll %}
-    <li>
-      <a href="{{node.url | relative_url}}" class="btn{% if page.url == node.url %} active{% endif %}">{{node.title}}</a>
-    </li>
+    {% if node.access_admin != true or page.user_role == "access_admin" %}
+      <li>
+        <a href="{{node.url | relative_url}}" class="btn{% if page.url == node.url %} active{% endif %}">{{node.title}}</a>
+      </li>
+    {% endif %}
   {% endfor %}
 </ul>

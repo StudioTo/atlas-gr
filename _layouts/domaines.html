@@ -22,7 +22,7 @@
       {% for domaine in comps %}
         <h1>Domaine: {{ domaine.domaine }}</h1>
         {% for competence_obj in domaine.items %}
-          <h2>Compétence : {{ competence_obj.competence }}</h2>
+          <h2>{{ competence_obj.competence }}</h2>
           <table class="objectifs competences">
             {% for key in competence_obj.items %}
               {% assign label = key[0] %}
