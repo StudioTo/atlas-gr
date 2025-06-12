@@ -82,20 +82,7 @@ Metadata pour un cours - sous forme de Front Matter
     {% endif %}
   {% endif %}
 
-  <!-- {% if page.validation %}
-    {% if page.validation != 0 %}
-      <section class="meta-section profs-visible flex-box box-50">
-        <h2>Validation</h2>
-        <ul>
-          {% if page.validation and page.validation != 0 %}
-            <li>{{ page.validation }} note(s) / semestre</li>
-          {% endif %}
-        </ul>
-      </section>
-    {% endif %}
-  {% endif %}
-
-  {% if page.criteres %}
+  <!-- {% if page.criteres %}
     {% if page.criteres != 0 %}
       <section class="meta-section profs-visible flex-box box-50">
         <h2>Critères d’évaluation</h2>
@@ -122,6 +109,19 @@ Metadata pour un cours - sous forme de Front Matter
 
       {% include meta-competences-alt-1.html compArray=compArray %}
     </section>
+  {% endif %}
+
+  {% if page.validation %}
+    {% if page.validation != 0 %}
+      <section class="meta-section meta-validation profs-visible flex-box box-50">
+        <h2>Validation</h2>
+        <ul>
+          {% if page.validation and page.validation != 0 %}
+            <li>{{ page.validation }} note(s) / semestre</li>
+          {% endif %}
+        </ul>
+      </section>
+    {% endif %}
   {% endif %}
 
   {% if page.profs %}
