@@ -25,22 +25,22 @@
           <h2>{{ competence_obj.competence }}</h2>
           <table class="objectifs competences">
             {% for item in competence_obj.items %}
-              {% assign label = item[0] %}
-              {% assign description = item[1] %}
-              <tr class="competence-row" data-toggle-target="related-{{ label | slugify }}">
-                <td>{{ label }}</td>
-                <td>{{ description }}</td>
+              {% assign key = item[0] %}
+              {% assign data = item[1] %}
+              <tr class="competence-row" data-toggle-target="related-{{ data.code | slugify }}">
+                <td>{{ data.code }}</td>
+                <td>{{ data.description }}</td>
               </tr>
               {% assign related_courses = "" %}
               {% for unCours in cours %}
                 {% for comp in unCours.competences %}
-                  {% if comp[label] %}
+                  {% if comp[data.code] %}
                     {% assign related_courses = related_courses | append: '<li><a href="/formation-gr' | append: unCours.url | append: '">' | append: unCours.title | append: '</a></li>' %}
                   {% endif %}
                 {% endfor %}
               {% endfor %}
               {% if related_courses != "" %}
-                <tr class="related-courses hidden" id="related-{{ label | slugify }}">
+                <tr class="related-courses hidden" id="related-{{ data.code | slugify }}">
                   <td></td>
                   <td>
                     <ul>
