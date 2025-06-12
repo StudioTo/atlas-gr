@@ -24,13 +24,31 @@
         {% for competence_obj in domaine.items %}
           <h2>{{ competence_obj.competence }}</h2>
           <table class="objectifs competences">
-            {% for key in competence_obj.items %}
-              {% assign label = key[0] %}
-              {% assign description = key[1] %}
+            {% for label in competence_obj.items %}
+              {% assign description = competence_obj.items[label] %}
               <tr>
                 <td>{{ label }}</td>
                 <td>{{ description }}</td>
               </tr>
+              {% assign related_courses = "" %}
+              {% for unCours in cours %}
+                {% for d in unCours.comp %}
+                  {% for c in d.items %}
+                    {% if c.items[label] %}
+                      {% assign related_courses = related_courses | append: '<li><a href="' | append: unCours.url | append: '">' | append: unCours.title | append: '</a></li>' %}
+                    {% endif %}
+                  {% endfor %}
+                {% endfor %}
+              {% endfor %}
+              {% if related_courses != "" %}
+                <tr>
+                  <td colspan="2">
+                    <ul>
+                      {{ related_courses }}
+                    </ul>
+                  </td>
+                </tr>
+              {% endif %}
             {% endfor %}
           </table>
         {% endfor %}
