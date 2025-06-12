@@ -32,9 +32,9 @@
               </tr>
               {% assign related_courses = "" %}
               {% for unCours in cours %}
-                {% for d in unCours.comp %}
-                  {% for c in d.items %}
-                    {% if c.items[label] %}
+                {% for domaine_comp in unCours.comp %}
+                  {% for competence in domaine_comp.items %}
+                    {% if competence.items[label] %}
                       {% assign related_courses = related_courses | append: '<li><a href="' | append: unCours.url | append: '">' | append: unCours.title | append: '</a></li>' %}
                     {% endif %}
                   {% endfor %}
@@ -42,7 +42,8 @@
               {% endfor %}
               {% if related_courses != "" %}
                 <tr>
-                  <td colspan="2">
+                  <td></td>
+                  <td>
                     <ul>
                       {{ related_courses }}
                     </ul>
