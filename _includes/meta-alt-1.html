@@ -130,11 +130,14 @@ Metadata pour un cours - sous forme de Front Matter
   {% if page.validation %}
     <section class="meta-section meta-validation profs-visible flex-box box-100">
       <h2>Validation</h2>
-        <ul>
-          {% for item in page.validation %}
-            <li>{{ item }}</li>
-          {% endfor %}
-        </ul>
+      {% for item in page.validation %}
+        {% for key in item %}
+          <li>
+            {{ key.first }}:
+            {{ key.last }}
+          </li>
+        {% endfor %}
+      {% endfor %}
     </section>
   {% endif %}
 
