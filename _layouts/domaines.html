@@ -30,7 +30,7 @@
               {% assign related_courses = "" %}
               {% for unCours in cours %}
                 {% for comp in unCours.competences %}
-                  {% if comp[data.code] %}
+                  {% if comp[key] %}
                     {% assign related_courses = related_courses | append: '<li><a href="/formation-gr' | append: unCours.url | append: '">' | append: unCours.title | append: '</a></li>' %}
                   {% endif %}
                 {% endfor %}
@@ -38,14 +38,14 @@
               <tr
                 {% if related_courses != "" %}
                   class="competence-row"
-                  data-toggle-target="related-{{ data.code | slugify }}"
+                  data-toggle-target="related-{{ key | slugify }}"
                 {% endif %}
               >
                 <td>{{ data.code }}</td>
                 <td>{{ data.description }}</td>
               </tr>
               {% if related_courses != "" %}
-                <tr class="related-courses hidden" id="related-{{ data.code | slugify }}">
+                <tr class="related-courses hidden" id="related-{{ key | slugify }}">
                   <td></td>
                   <td>
                     <ul>
