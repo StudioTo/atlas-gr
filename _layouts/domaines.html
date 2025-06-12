@@ -24,8 +24,9 @@
         {% for competence_obj in domaine.items %}
           <h2>{{ competence_obj.competence }}</h2>
           <table class="objectifs competences">
-            {% for label in competence_obj.items %}
-              {% assign description = competence_obj.items[label] %}
+            {% for item in competence_obj.items %}
+              {% assign label = item[0] %}
+              {% assign description = item[1] %}
               <tr>
                 <td>{{ label }}</td>
                 <td>{{ description }}</td>
