@@ -154,10 +154,6 @@ a {
     border-top: 2px solid $black;
   }
 
-	.related-courses ul {
-		margin: 0
-	}
-
 }
 
 .competence-row:hover {
@@ -167,6 +163,10 @@ a {
 
 .hidden {
 	display: none;
+}
+
+.related-courses ul {
+	margin: 0
 }
 
 .main-content-columns {
