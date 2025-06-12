@@ -11,17 +11,16 @@
       {% assign definition = "" %}
       {% for domaine in compArray %}
         {% for competence_obj in domaine.items %}
-          {% for subkey in competence_obj.items %}
-            {% if subkey == key %}
-              {% assign definition = competence_obj.items[subkey] %}
-            {% endif %}
-          {% endfor %}
+          {% if competence_obj.items[key] %}
+            {% assign definition = competence_obj.items[key] %}
+          {% endif %}
         {% endfor %}
       {% endfor %}
 
       <tr>
         <td data-comp="{{ key }}" class="data-nbr">{{ key }}</td>
-        <td>{{ definition }} ({{ periods }}p.)</td>
+        <td>{{ definition }}</td>
+        <!-- <td>({{ periods }}p.)</td> -->
       </tr>
 
       {% assign periodesCours = periodesCours | plus: periods %}
